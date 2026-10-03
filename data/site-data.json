@@ -1,0 +1,16 @@
+{
+  "updated": "2026-10-03T10:00:00.000Z",
+  "phone": "919994668101",
+  "emiRate": 12,
+  "products": [
+    { "id": 1, "name": "Redmi Note 13", "price": 19999,
+      "sp": { "brand": "Redmi", "ram": "8GB", "storage": "128GB", "net": "5G" },
+      "specs": "", "img": "" }
+  ],
+  "offers": [
+    { "id": 2, "title": "Diwali Special", "detail": "", "tag": "₹2,000 OFF", "till": "2026-11-05", "img": "" }
+  ],
+  "accs": [
+    { "id": 3, "cat": "cover", "name": "BMW Cover", "price": "", "img": "" }
+  ]
+}
