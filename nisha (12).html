@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your trusted local mobile phone shop for smartphones, accessories and repairs." />
+  <title>NISHA MOBILES | Mobile Shop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #6c4cff;
+      --primary-dark: #5134d4;
+      --dark: #111827;
+      --text: #374151;
+      --muted: #6b7280;
+      --light: #f6f7fb;
+      --white: #ffffff;
+      --green: #20c76a;
+      --red: #ef4444;
+      --border: #e5e7eb;
+      --shadow: 0 12px 35px rgba(17, 24, 39, 0.09);
+      --radius: 20px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+ body {
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+gap: 10px;
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), #9b7cff);
+      font-size: 21px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    nav a {
+      font-size: 14px;
+      font-weight: 600;
+      color: #4b5563;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-btn {
+      background: var(--dark);
+      color: white !important;
+      padding: 10px 17px;
+      border-radius: 10px;
+    }
+
+    .menu {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(108,76,255,.18), transparent 30%),
+        linear-gradient(135deg, #f8f7ff, #fff);
+      padding: 85px 0 75px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .badge {
+      display: inline-flex;
+      background: #eeeaff;
+      color: var(--primary);
+      padding: 7px 13px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      color: var(--dark);
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      max-width: 580px;
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 21px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: .2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+ .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: white;
+      border-color: var(--border);
+      color: var(--dark);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .phone-card {
+      position: relative;
+      width: min(360px, 90%);
+      margin: auto;
+      padding: 12px;
+      border-radius: 35px;
+      background: #151515;
+      box-shadow: 0 30px 60px rgba(0,0,0,.2);
+      transform: rotate(3deg);
+    }
+
+    .phone-screen {
+      min-height: 570px;
+      border-radius: 27px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #251c58, #765cff);
+      color: white;
+      padding: 35px 25px;
+      position: relative;
+    }
+
+    .phone-screen::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      right: -90px;
+      bottom: 50px;
+    }
+
+    .phone-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      opacity: .8;
+    }
+
+    .phone-content {
+      position: absolute;
+      left: 25px;
+      bottom: 40px;
+    }
+
+    .phone-content small {
+      opacity: .8;
+    }
+
+    .phone-content h2 {
+      font-size: 35px;
+      line-height: 1.1;
+      margin: 5px 0;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 85px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-head h2 {
+      color: var(--dark);
+      font-size: 38px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: #eeeaff;
+      color: var(--primary);
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+
+    .feature h3 {
+      color: var(--dark);
+      margin-bottom: 7px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* PRODUCTS */
+    .products-section {
+      background: var(--light);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: .25s;
+    }
+
+    .product:hover {
+      transform: translateY(-6px);
+    }
+
+    .product-img {
+      height: 245px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #f1efff, #fafafa);
+      font-size: 90px;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+.product-info h3 {
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+
+    .product-info p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      color: var(--primary);
+      font-size: 21px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .small-btn {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      background: #f0edff;
+      color: var(--primary);
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* OFFER */
+    .offer {
+      background: linear-gradient(120deg, #171126, #30216b);
+      border-radius: 30px;
+      padding: 50px;
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .offer h2 {
+      font-size: 40px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .offer p {
+      color: #d7d0f3;
+    }
+
+    .offer .btn {
+      background: white;
+      color: var(--dark);
+    }
+
+    /* SERVICES */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 14px;
+    }
+
+    .service h3 {
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .service p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* REVIEWS */
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review {
+      padding: 28px;
+      background: var(--light);
+      border-radius: var(--radius);
+    }
+
+    .stars {
+      color: #f59e0b;
+      margin-bottom: 13px;
+    }
+
+    .review p {
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .review strong {
+      color: var(--dark);
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: var(--light);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 25px;
+    }
+
+    .contact-card,
+    .map-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 15px;
+      margin: 22px 0;
+    }
+
+    .contact-item-icon {
+      width: 43px;
+      height: 43px;
+      flex: 0 0 43px;
+      display: grid;
+      place-items: center;
+      background: #eeeaff;
+      border-radius: 12px;
+    }
+
+    .contact-item h4 {
+      color: var(--dark);
+    }
+
+    .contact-item p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .map-placeholder {
+      min-height: 330px;
+      border-radius: 15px;
+      background:
+        linear-gradient(rgba(108,76,255,.08), rgba(108,76,255,.08)),
+        repeating-linear-gradient(45deg, #e8e8e8 0 2px, transparent 2px 35px);
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+.map-placeholder div {
+      background: white;
+      padding: 22px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0e1117;
+      color: white;
+      padding: 50px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 35px;
+    }
+
+    footer h3 {
+      margin-bottom: 13px;
+    }
+
+    footer p,
+    footer a {
+      color: #9ca3af;
+      font-size: 14px;
+    }
+
+    footer a {
+      display: block;
+      margin: 7px 0;
+    }
+
+    .copyright {
+      border-top: 1px solid #252932;
+      padding-top: 20px;
+      color: #6b7280;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* WHATSAPP */
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--green);
+      color: white;
+      font-size: 27px;
+      box-shadow: 0 10px 30px rgba(32,199,106,.35);
+      z-index: 999;
+      transition: .2s;
+    }
+
+    .whatsapp:hover {
+      transform: scale(1.08);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .features,
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services,
+      .reviews {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav {
+        height: 68px;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: white;
+        flex-direction: column;
+        align-items: stretch;
+        box-shadow: 0 15px 30px rgba(0,0,0,.08);
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a {
+        padding: 9px;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .phone-card {
+        transform: none;
+      }
+
+      .features,
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .offer {
+        padding: 35px 25px;
+        grid-template-columns: 1fr;
+      }
+
+      .offer h2 {
+        font-size: 31px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .section-head h2 {
+        font-size: 31px;
+      }
+    }
+
+    /* ADMIN */
+    .product-img img { width:100%; height:100%; object-fit:cover; }
+    .admin-link { cursor:pointer; opacity:.55; font-size:13px; }
+    .admin-link:hover { opacity:1; }
+    .modal-bg { position:fixed; inset:0; background:rgba(17,24,39,.6); display:none; align-items:flex-start; justify-content:center; padding:4vh 14px; overflow:auto; z-index:3000; }
+    .modal-bg.open { display:flex; }
+    .modal { background:#fff; width:min(760px,100%); border-radius:20px; padding:26px; box-shadow:0 30px 70px rgba(0,0,0,.3); }
+    .modal.small { width:min(400px,100%); margin-top:12vh; }
+    .modal-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; gap:10px; }
+    .modal-head h3 { color:var(--dark); font-size:22px; }
+    .x-btn { border:0; background:#f3f4f6; width:36px; height:36px; border-radius:10px; font-size:18px; cursor:pointer; }
+    .modal label { display:block; font-size:13px; font-weight:700; color:var(--dark); margin:12px 0 5px; }
+    .modal input[type=text], .modal input[type=password], .modal input[type=number], .modal input[type=tel] { width:100%; padding:11px 13px; border:1px solid var(--border); border-radius:10px; font-size:15px; font-family:inherit; }
+    .modal input:focus { outline:2px solid var(--primary); border-color:transparent; }
+    button.small-btn { width:100%; border:0; cursor:pointer; font-family:inherit; padding:12px 14px; }
+    .small-btn.ghost { background:transparent; color:var(--ink); border:1px solid var(--line); margin-top:8px; }
+    .small-btn.ghost:hover { background:var(--violet-soft); color:var(--ink); }
+    .emi-box { background:var(--porcelain); border-radius:16px; padding:16px; margin-top:16px; }
+    .emi-big { font-family:Sora,Manrope,sans-serif; font-size:34px; font-weight:700; color:var(--ink); letter-spacing:-.02em; }
+    .emi-row { display:flex; justify-content:space-between; font-size:14px; padding:5px 0; color:var(--text); }
+    .emi-note { font-size:12px; color:var(--muted); margin-top:10px; }
+    .offer-list { display:grid; gap:10px; margin-top:20px; }
+    .offer-item { display:flex; justify-content:space-between; align-items:center; gap:14px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:14px 16px; }
+    .offer-item b { display:block; color:#fff; font-family:Sora,Manrope,sans-serif; font-weight:600; }
+    .offer-item span.d { display:block; color:#d7d0f3; font-size:14px; }
+    .offer-item small { display:block; color:#e3c795; font-size:12px; margin-top:2px; }
+    .offer-tag { background:linear-gradient(135deg,#e3c795,#c9a36a); color:#0f0c24; font-weight:700; border-radius:999px; padding:7px 14px; font-size:13px; white-space:nowrap; font-family:Sora,Manrope,sans-serif; }
+    .offer-side { display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+    .offer-enq { background:#25d366; color:#06371a; font-weight:700; font-size:13px; padding:8px 14px; border-radius:999px; white-space:nowrap; font-family:Sora,Manrope,sans-serif; transition:transform .2s; }
+    .offer-enq:hover { transform:translateY(-2px); }
+    @media (max-width:650px){ .offer-item { flex-direction:column; align-items:flex-start; } .offer-side { justify-content:flex-start; } }
+    .brand-tabs { display:flex; gap:10px; overflow-x:auto; padding:2px 2px 18px; margin-bottom:10px; scrollbar-width:thin; }
+    .brand-chip { flex:none; border:1px solid var(--line); background:#fff; color:var(--ink); font:600 14px Manrope,sans-serif; padding:10px 18px; border-radius:999px; cursor:pointer; transition:background .2s,color .2s,border-color .2s; }
+    .brand-chip small { opacity:.55; font-weight:700; margin-left:4px; }
+    .brand-chip:hover { border-color:var(--violet); }
+    .brand-chip.on { background:var(--ink); color:#fff; border-color:var(--ink); }
+    .brand-block { margin-bottom:54px; }
+    .brand-block:last-child { margin-bottom:0; }
+    .brand-head { display:flex; align-items:baseline; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--line); }
+    .brand-head h3 { font-size:clamp(22px,3vw,30px); font-weight:600; letter-spacing:-.02em; color:var(--ink); }
+    .brand-head span { color:var(--muted); font-size:14px; font-weight:600; }
+    #mobiles { scroll-margin-top: 76px; }
+    .brand-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:16px; }
+    .brand-tile { background:#fff; border:1px solid var(--line); border-radius:22px; padding:24px 14px 20px; text-align:center; cursor:pointer; font-family:inherit; box-shadow:var(--shadow); transition:transform .2s, border-color .2s, box-shadow .2s; }
+    .brand-tile:hover { transform:translateY(-4px); border-color:var(--violet); box-shadow:0 1px 2px rgba(15,12,36,.05), 0 24px 40px -20px rgba(106,77,255,.4); }
+    .brand-tile .brand-logo { width:64px; height:64px; border-radius:50%; margin:0 auto 12px; display:grid; place-items:center; background:var(--violet-soft); color:var(--ink); font:700 26px Sora,Manrope,sans-serif; }
+    .brand-tile b { display:block; color:var(--ink); font-family:Sora,Manrope,sans-serif; font-weight:600; font-size:16px; }
+    .brand-tile small { color:var(--muted); font-size:13px; font-weight:600; }
+    .brand-tile.empty { opacity:.6; }
+    .brand-tile.all { background:var(--ink); border-color:var(--ink); }
+    .brand-tile.all b { color:#fff; } .brand-tile.all small { color:rgba(255,255,255,.65); }
+    .brand-tile.all .brand-logo { background:rgba(255,255,255,.12); color:var(--brass); }
+    .brand-bar { margin-bottom:26px; }
+    .brand-back { border:1px solid var(--line); background:#fff; color:var(--ink); font:600 14px Manrope,sans-serif; padding:10px 18px; border-radius:999px; cursor:pointer; }
+    .brand-back:hover { border-color:var(--violet); background:var(--violet-soft); }
+    .row3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .modal select { width:100%; padding:11px 10px; border:1px solid var(--border); border-radius:10px; font-size:14px; font-family:inherit; background:#fff; }
+    .modal select:focus { outline:2px solid var(--primary); border-color:transparent; }
+    .row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .modal .btn { padding:11px 18px; font-size:14px; }
+    .btn-danger { background:#fee2e2; color:#b91c1c; }
+    .admin-tabs { display:flex; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
+    .admin-tabs button { border:1px solid var(--border); background:#fff; padding:9px 15px; border-radius:10px; font-weight:700; cursor:pointer; font-family:inherit; }
+    .admin-tabs button.on { background:var(--dark); color:#fff; border-color:var(--dark); }
+    .admin-list { margin-top:18px; border-top:1px solid var(--border); }
+    .admin-item { display:flex; align-items:center; gap:12px; padding:11px 0; border-bottom:1px solid var(--border); }
+    .admin-item .thumb { width:48px; height:48px; border-radius:10px; background:#f1efff; display:grid; place-items:center; font-size:26px; overflow:hidden; flex:none; }
+    .admin-item .thumb img { width:100%; height:100%; object-fit:cover; }
+    .admin-item .meta { flex:1; min-width:0; }
+    .admin-item .meta b { color:var(--dark); display:block; }
+    .admin-item .meta span { font-size:12px; color:var(--muted); }
+    .admin-item button { border:0; padding:7px 12px; border-radius:8px; cursor:pointer; font-weight:700; font-size:13px; font-family:inherit; }
+    .msg { font-size:13px; margin-top:10px; min-height:18px; }
+    .msg.err { color:var(--red); } .msg.ok { color:#15803d; }
+    @media (max-width:650px){ .row2{grid-template-columns:1fr;} .row3{grid-template-columns:1fr 1fr;} .modal{padding:18px;} }
+
+    /* ===== PREMIUM THEME (overrides) ===== */
+    :root {
+      --ink: #0f0c24; --ink-2: #1b1740; --violet: #6a4dff; --violet-soft: #ebe7ff;
+      --porcelain: #f5f4f9; --line: #e6e3f0; --brass: #c9a36a;
+      --primary: #6a4dff; --primary-dark: #4f35d8; --dark: #0f0c24; --text: #3b3a52; --muted: #6d6b84; --light: var(--porcelain);
+      --shadow: 0 1px 2px rgba(15,12,36,.05), 0 18px 40px -18px rgba(15,12,36,.18);
+    }
+    body { font-family: Manrope, Inter, Arial, sans-serif; background: #fff; letter-spacing: .005em; }
+    h1, h2, h3, .logo, .price, .btn, .nav-btn, .phone-content h2 { font-family: Sora, Manrope, Arial, sans-serif; }
+    :focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
+    section { padding: 110px 0; }
+
+    /* header */
+    header { background: rgba(15,12,36,.82); border-bottom: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(18px) saturate(1.4); }
+    .logo { color: #fff; font-size: 18px; letter-spacing: .02em; }
+    .logo-icon { background: linear-gradient(145deg, var(--brass), #f1dcb4); color: var(--ink); border-radius: 12px; }
+    nav a { color: rgba(255,255,255,.72); font-weight: 600; transition: color .2s; }
+    nav a:hover { color: #fff; }
+    .nav-btn { background: #fff; color: var(--ink) !important; border-radius: 999px; padding: 10px 20px; }
+    .menu { color: #fff; }
+
+    /* hero */
+    .hero { background: radial-gradient(60% 70% at 85% 25%, rgba(106,77,255,.45), transparent 60%), radial-gradient(40% 50% at 10% 100%, rgba(201,163,106,.16), transparent 70%), var(--ink); padding: 120px 0 110px; color: #fff; }
+    .badge { background: rgba(255,255,255,.08); color: #e9e4ff; border: 1px solid rgba(255,255,255,.14); font-weight: 600; letter-spacing: .02em; }
+    .hero h1 { color: #fff; font-weight: 600; letter-spacing: -.035em; line-height: 1.04; }
+    .hero h1 span { color: #cfc4ff; font-weight: 500; }
+    .hero p { color: rgba(255,255,255,.7); line-height: 1.75; }
+    .btn { border-radius: 999px; padding: 15px 26px; font-weight: 600; font-size: 15px; }
+    .btn-primary { background: linear-gradient(135deg, #7b60ff, var(--primary-dark)); box-shadow: 0 12px 28px -10px rgba(106,77,255,.8); }
+    .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.28); }
+    .btn-outline:hover { background: rgba(255,255,255,.08); color: #fff; border-color: #fff; }
+    .phone-card { transform: none; padding: 10px; border-radius: 46px; background: linear-gradient(145deg, #3a3a44, #0c0c10 60%, #4a4a56); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 50px 90px -20px rgba(0,0,0,.7), 0 0 120px -20px rgba(106,77,255,.55); }
+    .phone-screen { border-radius: 38px; background: radial-gradient(90% 60% at 30% 10%, #8a73ff, transparent 60%), linear-gradient(160deg, #1d1650, #5a3fe0); }
+    .phone-content h2 { font-size: 34px; letter-spacing: -.02em; }
+
+    /* headings */
+    .section-head { margin-bottom: 60px; }
+    .section-head h2 { font-size: clamp(30px, 4vw, 44px); font-weight: 600; letter-spacing: -.03em; color: var(--ink); }
+    .section-head p { font-size: 17px; max-width: 520px; margin: 0 auto; }
+
+    /* cards */
+    .feature, .service, .review, .map-card, .contact-item { background: #fff; border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; }
+    .feature:hover, .service:hover, .review:hover { transform: translateY(-4px); }
+    .feature-icon, .service-icon { background: var(--violet-soft); border-radius: 16px; }
+    .feature h3, .service h3 { color: var(--ink); font-weight: 600; letter-spacing: -.01em; }
+
+    /* products */
+    .products-section { background: var(--porcelain); }
+    .product { border-radius: 24px; border: 1px solid var(--line); background: #fff; box-shadow: var(--shadow); }
+    .product:hover { transform: translateY(-6px); box-shadow: 0 1px 2px rgba(15,12,36,.05), 0 30px 50px -20px rgba(106,77,255,.35); }
+    .product-img { background: radial-gradient(70% 70% at 50% 40%, #fff, #ece9f8); height: 240px; }
+    .product-info { padding: 22px; }
+    .product-info h3 { font-weight: 600; letter-spacing: -.01em; color: var(--ink); }
+    .price { color: var(--ink); font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
+    .small-btn { background: var(--ink); color: #fff; border-radius: 999px; font-weight: 600; transition: background .2s; }
+    .small-btn:hover { background: var(--violet); }
+
+    /* offer */
+    .offer { background: radial-gradient(60% 120% at 90% 0%, rgba(106,77,255,.5), transparent 60%), linear-gradient(135deg, var(--ink), var(--ink-2)); border-radius: 32px; border: 1px solid rgba(255,255,255,.08); }
+    .offer h2 { font-weight: 600; letter-spacing: -.03em; }
+    .offer .btn { background: linear-gradient(135deg, #e3c795, var(--brass)); color: var(--ink); }
+
+    /* reviews / contact */
+    .stars { color: var(--brass); }
+    .contact-section { background: var(--porcelain); }
+    .contact-item-icon { background: var(--violet-soft); border-radius: 14px; }
+    .map-placeholder { background: linear-gradient(135deg, #ece9f8, #f8f7fd); border-radius: 18px; }
+
+    /* footer */
+    footer { background: var(--ink); color: rgba(255,255,255,.65); }
+    footer h3 { color: #fff; font-family: Sora, Manrope, sans-serif; }
+    footer a:hover { color: #fff; }
+    .copyright { border-top: 1px solid rgba(255,255,255,.1); }
+    .whatsapp { box-shadow: 0 14px 30px -8px rgba(32,199,106,.6); }
+
+    /* admin modal polish */
+    .modal { border-radius: 26px; }
+    .modal .btn-primary { background: var(--ink); box-shadow: none; }
+    .modal .btn-outline { color: var(--ink); border-color: var(--line); }
+    .admin-tabs button.on { background: var(--ink); }
+
+    @media (max-width: 900px) { section { padding: 80px 0; } .hero { padding: 90px 0 80px; } }
+    @media (max-width: 650px) {
+      nav { background: var(--ink); border-bottom: 1px solid rgba(255,255,255,.1); }
+      section { padding: 64px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+    /* ===== PREMIUM MOBILE LIST ===== */
+    .products { gap: 24px; }
+    .product { position: relative; display: flex; flex-direction: column; border-radius: 26px; border: 1px solid var(--line); background: #fff; box-shadow: 0 1px 2px rgba(15,12,36,.04), 0 14px 30px -18px rgba(15,12,36,.25); transition: transform .3s, box-shadow .3s, border-color .3s; }
+    .product:hover { transform: translateY(-8px); border-color: rgba(106,77,255,.35); box-shadow: 0 2px 4px rgba(15,12,36,.05), 0 34px 54px -22px rgba(106,77,255,.45); }
+    .product-img { position: relative; height: 230px; background: radial-gradient(75% 65% at 50% 38%, #ffffff 0%, #efecfb 62%, #e4e0f6 100%); }
+    .product-img .ph { font-size: 96px; filter: drop-shadow(0 18px 18px rgba(79,53,216,.25)); transition: transform .35s; }
+    .product:hover .product-img .ph { transform: scale(1.08) rotate(-4deg); }
+    .pill-row { position: absolute; top: 14px; left: 14px; right: 14px; display: flex; gap: 6px; z-index: 2; }
+    .pill { background: rgba(15,12,36,.88); color: #fff; font: 600 11.5px Manrope, sans-serif; letter-spacing: .02em; padding: 5px 11px; border-radius: 999px; backdrop-filter: blur(6px); }
+    .pill.five { margin-left: auto; background: linear-gradient(135deg, #e3c795, #c9a36a); color: var(--ink); font-weight: 800; }
+    .product-info { padding: 20px 20px 22px; display: flex; flex-direction: column; flex: 1; }
+    .product-info h3 { font-size: 18px; line-height: 1.25; margin-bottom: 8px; }
+    .spec-main { font: 700 13.5px Sora, Manrope, sans-serif; color: var(--violet); margin-bottom: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .chips span { background: var(--porcelain); border: 1px solid var(--line); color: var(--text); font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 10px; }
+    .product-info p.extra { font-size: 12.5px; color: var(--muted); margin-bottom: 10px; }
+    .price { margin: auto 0 14px; padding-top: 6px; font-size: 26px; letter-spacing: -.03em; }
+    .card-actions { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+    .card-actions .small-btn { margin: 0; padding: 13px 10px; font-size: 14px; }
+    .emi-ico { border: 1px solid var(--line); background: #fff; color: var(--ink); font: 700 13px Manrope, sans-serif; padding: 0 14px; border-radius: 999px; cursor: pointer; transition: background .2s, border-color .2s; }
+    .emi-ico:hover { background: var(--violet-soft); border-color: var(--violet); }
+
+    /* brand list */
+    .brand-grid { gap: 18px; }
+    .brand-tile { border-radius: 24px; padding: 28px 14px 22px; }
+    .brand-tile .brand-logo { width: 70px; height: 70px; background: linear-gradient(145deg, #ffffff, #e9e5fb); box-shadow: inset 0 0 0 1px var(--line), 0 12px 22px -10px rgba(106,77,255,.45); font-size: 28px; }
+    .brand-tile:hover .brand-logo { background: linear-gradient(145deg, #7b60ff, #4f35d8); color: #fff; }
+    .brand-tile.all:hover .brand-logo { background: rgba(255,255,255,.2); color: var(--brass); }
+    .brand-head { align-items: center; border-bottom: 0; padding-bottom: 0; margin-bottom: 26px; }
+    .brand-head h3 { font-size: clamp(26px, 3.4vw, 36px); letter-spacing: -.03em; }
+    .brand-head span { background: var(--violet-soft); color: var(--violet); padding: 5px 13px; border-radius: 999px; font-size: 13px; }
+    .brand-back { padding: 11px 20px; }
+    @media (max-width: 650px) { .products { gap: 16px; } .product-img { height: 210px; } }
+
+    /* ===== POPULAR MOBILES — DARK LUXURY SHOWCASE ===== */
+    .products-section { background: radial-gradient(55% 40% at 80% 0%, rgba(106,77,255,.38), transparent 70%), radial-gradient(45% 35% at 5% 100%, rgba(201,163,106,.14), transparent 70%), var(--ink); color: #fff; }
+    .products-section .section-head h2 { color: #fff; }
+    .products-section .section-head p { color: rgba(255,255,255,.65); }
+
+    /* brand tiles */
+    .products-section .brand-tile { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); box-shadow: none; backdrop-filter: blur(10px); }
+    .products-section .brand-tile:hover { border-color: rgba(227,199,149,.7); box-shadow: 0 24px 44px -22px rgba(201,163,106,.55); }
+    .products-section .brand-tile b { color: #fff; }
+    .products-section .brand-tile small { color: rgba(255,255,255,.6); }
+    .products-section .brand-tile .brand-logo { background: linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.04)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); color: #f1dcb4; }
+    .products-section .brand-tile:hover .brand-logo { background: linear-gradient(145deg, #e3c795, #c9a36a); color: var(--ink); }
+    .products-section .brand-tile.all { background: linear-gradient(145deg, #e3c795, #c9a36a); border-color: transparent; }
+    .products-section .brand-tile.all b, .products-section .brand-tile.all small { color: var(--ink); }
+    .products-section .brand-tile.all .brand-logo { background: rgba(15,12,36,.12); box-shadow: none; color: var(--ink); }
+    .products-section .brand-tile.empty { opacity: .5; }
+    .products-section .brand-back { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.22); }
+    .products-section .brand-back:hover { background: rgba(255,255,255,.14); border-color: #e3c795; }
+    .products-section .brand-head h3 { color: #fff; }
+    .products-section .brand-head span { background: rgba(227,199,149,.16); color: #f1dcb4; }
+    .products-section .brand-block > p { color: rgba(255,255,255,.7); }
+
+    /* phone cards */
+    .products-section .product { background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 30px 50px -30px rgba(0,0,0,.6); backdrop-filter: blur(10px); }
+    .products-section .product:hover { border-color: rgba(227,199,149,.65); box-shadow: 0 40px 64px -26px rgba(106,77,255,.6), 0 0 0 1px rgba(227,199,149,.25); }
+    .products-section .product-img { background: radial-gradient(70% 60% at 50% 40%, rgba(255,255,255,.22), rgba(106,77,255,.18) 55%, transparent 100%); }
+    .products-section .pill { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.2); }
+    .products-section .pill.five { background: linear-gradient(135deg, #e3c795, #c9a36a); border: 0; }
+    .products-section .product-info h3 { color: #fff; }
+    .products-section .spec-main { color: #f1dcb4; }
+    .products-section .chips span { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.14); color: rgba(255,255,255,.85); }
+    .products-section .product-info p.extra { color: rgba(255,255,255,.55); }
+    .products-section .price { color: #f1dcb4; background: linear-gradient(135deg, #fff1d2, #d9b377); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .products-section .card-actions .small-btn { background: linear-gradient(135deg, #e3c795, #c9a36a); color: var(--ink); font-weight: 700; }
+    .products-section .card-actions .small-btn:hover { background: linear-gradient(135deg, #f1dcb4, #d9b377); }
+    .products-section .emi-ico { background: transparent; color: #fff; border-color: rgba(255,255,255,.28); }
+    .products-section .emi-ico:hover { background: rgba(255,255,255,.12); border-color: #e3c795; }
+
+    /* ===== PREMIUM ADMIN ===== */
+    .modal-bg { background: rgba(15,12,36,.72); backdrop-filter: blur(8px); }
+    .modal { padding: 0 26px 26px; border-radius: 28px; border: 1px solid rgba(255,255,255,.5); box-shadow: 0 40px 90px -20px rgba(0,0,0,.6); overflow: hidden; }
+    .modal-bg.open .modal { animation: modalPop .28s ease; }
+    @keyframes modalPop { from { opacity: 0; transform: translateY(14px) scale(.98); } }
+    .modal-head { margin: 0 -26px 22px; padding: 20px 26px; background: radial-gradient(80% 160% at 100% 0%, rgba(106,77,255,.55), transparent 60%), linear-gradient(135deg, var(--ink), var(--ink-2)); border-bottom: 2px solid var(--brass); }
+    .modal-head h3 { color: #fff; font-size: 20px; letter-spacing: -.01em; }
+    .modal-head .x-btn { background: rgba(255,255,255,.12); color: #fff; border-radius: 12px; transition: background .2s; }
+    .modal-head .x-btn:hover { background: rgba(255,255,255,.24); }
+    .modal-head .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.3); padding: 8px 16px; }
+    .modal-head .btn-outline:hover { background: rgba(255,255,255,.12); border-color: #fff; color: #fff; }
+
+    .admin-tabs { background: var(--porcelain); padding: 5px; border-radius: 16px; gap: 4px; margin-bottom: 10px; }
+    .admin-tabs button { flex: 1; border: 0; background: transparent; color: var(--muted); border-radius: 12px; padding: 11px 12px; font-size: 14px; transition: background .2s, color .2s, box-shadow .2s; }
+    .admin-tabs button:hover { color: var(--ink); }
+    .admin-tabs button.on { background: #fff; color: var(--violet); box-shadow: 0 2px 10px rgba(15,12,36,.1); }
+
+    .modal label { font-size: 13px; font-weight: 700; color: var(--ink); margin: 16px 0 6px; }
+    .modal input[type=text], .modal input[type=password], .modal input[type=number], .modal input[type=tel], .modal input[type=date], .modal select { background: #fafafe; border: 1px solid var(--line); border-radius: 13px; padding: 13px 14px; font-size: 15px; color: var(--ink); transition: border-color .2s, box-shadow .2s, background .2s; }
+    .modal input[type=file] { width: 100%; padding: 11px; border: 1.5px dashed #cfc9ea; border-radius: 13px; background: #fafafe; font-family: inherit; font-size: 14px; }
+    .modal input:focus, .modal select:focus { outline: none; border-color: var(--violet); background: #fff; box-shadow: 0 0 0 4px var(--violet-soft); }
+    .modal .btn { border-radius: 999px; font-weight: 700; }
+    .modal .btn-primary { background: linear-gradient(135deg, #7b60ff, var(--primary-dark)); box-shadow: 0 12px 24px -10px rgba(106,77,255,.75); }
+    .modal .btn-outline { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    .modal .btn-outline:hover { border-color: var(--violet); background: var(--violet-soft); color: var(--ink); }
+    .btn-danger { background: #fff1f1; color: #b91c1c; }
+    .modal .msg.ok { color: #15803d; font-weight: 600; } .modal .msg.err { font-weight: 600; }
+
+    .admin-list { border-top: 0; margin-top: 22px; }
+    .admin-item { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 12px 14px; margin-bottom: 10px; box-shadow: 0 1px 2px rgba(15,12,36,.04); transition: border-color .2s, box-shadow .2s; }
+    .admin-item:hover { border-color: rgba(106,77,255,.4); box-shadow: 0 14px 26px -18px rgba(106,77,255,.5); }
+    .admin-item .thumb { width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(145deg, #fff, var(--violet-soft)); }
+    .admin-item .meta b { font-family: Sora, Manrope, sans-serif; font-weight: 600; font-size: 15px; }
+    .admin-item button { border-radius: 999px; padding: 8px 14px; transition: filter .2s; }
+    .admin-item button:hover { filter: brightness(.95); }
+    .modal.small .modal-head { margin-bottom: 8px; }
+    @media (max-width: 650px) {
+      .modal { padding: 0 18px 20px; }
+      .modal-head { margin: 0 -18px 18px; padding: 16px 18px; }
+      .admin-tabs button { font-size: 12.5px; padding: 10px 6px; }
+      .admin-item { flex-wrap: wrap; }
+    }
+    @media (prefers-reduced-motion: reduce) { .modal-bg.open .modal { animation: none; } }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header>
+    <div class="container nav">
+<!-- CHANGE SHOP NAME HERE -->
+      <a href="#home" class="logo">
+        <span class="logo-icon">📱</span>
+        <span>NISHA MOBILES</span>
+      </a>
+
+      <button class="menu" onclick="toggleMenu()">☰</button>
+
+      <nav id="nav">
+        <a href="#home">Home</a>
+        <a href="#mobiles">Mobiles</a>
+        <a href="#services">Services</a>
+        <a href="#offers">Offers</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-btn" href="tel:+919876543210">Call Now</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div class="hero-content">
+          <span class="badge">📍 Your Local Mobile Store</span>
+
+          <h1>
+            Find Your<br>
+            <span>Perfect Phone.</span>
+          </h1>
+
+          <p>
+            Smartphones, accessories and professional mobile repair services
+            — all under one roof at the best local prices.
+          </p>
+
+          <div class="buttons">
+            <a href="#mobiles" class="btn btn-primary">
+              📱 View Mobiles
+            </a>
+
+            <a href="https://wa.me/919876543210?text=Hello%20I%20want%20to%20know%20about%20your%20mobile%20phones."
+               class="btn btn-outline">
+              💬 WhatsApp Us
+            </a>
+          </div>
+        </div>
+
+        <div class="phone-card">
+          <div class="phone-screen">
+            <div class="phone-top">
+              <span>9:41</span>
+              <span>● ● ●</span>
+            </div>
+
+            <div class="phone-content">
+              <small>NEW ARRIVAL</small>
+              <h2>Latest<br>Smartphones</h2>
+              <p>Available Now</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         FEATURES
+    ========================== -->
+    <section>
+      <div class="container">
+
+        <div class="features">
+
+          <div class="feature">
+            <div class="feature-icon">📱</div>
+            <h3>Latest Mobiles</h3>
+            <p>Popular smartphones from leading brands.</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">💰</div>
+            <h3>Best Prices</h3>
+            <p>Competitive local prices and special offers.</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🔧</div>
+            <h3>Expert Repairs</h3>
+            <p>Professional service for common mobile problems.</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🛡️</div>
+            <h3>Trusted Service</h3>
+            <p>Friendly support before and after your purchase.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         PRODUCTS
+    ========================== -->
+    <section class="products-section" id="mobiles">
+      <div class="container">
+<div class="section-head">
+          <h2>Popular Mobiles</h2>
+          <p>Some of our popular models</p>
+        </div>
+
+        <div id="brandTabs"></div>
+        <div id="productGrid"></div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         OFFER
+    ========================== -->
+    <section id="offers">
+      <div class="container">
+        <div class="offer">
+          <div>
+            <h2>🔥 Today's Offers</h2>
+            <p id="offerSub">Visit our store for today's latest deals, exchange offers and accessories.</p>
+            <div class="offer-list" id="offerList"></div>
+          </div>
+          <a id="offerCta" class="btn" target="_blank" rel="noopener">Get Today's Offers</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+    <section id="services">
+      <div class="container">
+
+        <div class="section-head">
+          <h2>Our Services</h2>
+          <p>More than just a mobile shop</p>
+        </div>
+
+        <div class="services">
+
+          <div class="service">
+            <div class="service-icon">🔧</div>
+            <h3>Mobile Repair</h3>
+ <p>
+              Screen, battery, charging, software and other common
+              mobile repairs.
+            </p>
+          </div>
+
+          <div class="service">
+            <div class="service-icon">🎧</div>
+            <h3>Accessories</h3>
+            <p>
+              Cases, screen protectors, chargers, cables, earbuds and more.
+            </p>
+          </div>
+
+          <div class="service">
+            <div class="service-icon">🔄</div>
+            <h3>Exchange</h3>
+            <p>
+              Bring your old phone and ask us about available exchange
+              options.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         REVIEWS
+    ========================== -->
+    <section id="reviews">
+      <div class="container">
+
+        <div class="section-head">
+          <h2>What Customers Say</h2>
+          <p>Customer reviews</p>
+        </div>
+
+        <div class="reviews">
+
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>
+              "Good service and friendly staff. They helped me choose
+              the right phone for my budget."
+            </p>
+            <strong>— Customer</strong>
+          </div>
+
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>
+              "Quick repair service and reasonable pricing. Very convenient
+              local shop."
+            </p>
+            <strong>— Customer</strong>
+          </div>
+
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>
+              "Good selection of phones and accessories. Staff were helpful."
+            </p>
+            <strong>— Customer</strong>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+
+        <div class="section-head">
+          <h2>Visit Our Shop</h2>
+          <p>Come in and let us help you find the right phone.</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="contact-card">
+
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div>
+                <h4>Address</h4>
+                <p>
+                  Main Road, Your Town,<br>
+                  Tamil Nadu, India
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div>
+                <h4>Phone</h4>
+                <p>
+                  <a href="tel:+919876543210">+91 98765 43210</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">🕐</div>
+              <div>
+                <h4>Opening Hours</h4>
+                <p>
+                  Monday – Sunday<br>
+                  9:00 AM – 9:00 PM
+                </p>
+</div>
+            </div>
+
+            <div class="buttons">
+              <a href="tel:+919876543210" class="btn btn-primary">
+                📞 Call Shop
+              </a>
+
+              <a href="https://wa.me/919876543210"
+                 class="btn btn-outline">
+                💬 WhatsApp
+              </a>
+            </div>
+
+          </div>
+
+
+          <div class="map-card">
+            <div class="map-placeholder">
+              <div>
+                <div style="font-size:42px;">📍</div>
+                <h3>Find Us on Google Maps</h3>
+                <p style="color:#6b7280; margin:6px 0 15px;">
+                  Replace this button with the shop's actual Google Maps link.
+                </p>
+
+                <!-- REPLACE THIS LINK -->
+                <a href="https://www.google.com/maps"
+                   target="_blank"
+                   class="btn btn-primary">
+                  Get Directions
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <h3>📱 NISHA MOBILES</h3>
+          <p>
+            Your trusted local destination for smartphones,
+            accessories and mobile services.
+          </p>
+        </div>
+
+        <div>
+          <h3>Quick Links</h3>
+          <a href="#home">Home</a>
+          <a href="#mobiles">Mobiles</a>
+          <a href="#services">Services</a>
+          <a href="#offers">Offers</a>
+        </div>
+
+        <div>
+          <h3>Contact</h3>
+          <a href="tel:+919876543210">📞 +91 98765 43210</a>
+          <a href="https://wa.me/919876543210">💬 WhatsApp</a>
+          <a href="#contact">📍 Visit Store</a>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © <span id="year"></span> NISHA MOBILES. All rights reserved.
+        &nbsp;·&nbsp; <a class="admin-link" onclick="openAdmin()">🔒 Admin</a>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a
+    class="whatsapp"
+    href="https://wa.me/919876543210?text=Hello%2C%20I%20would%20like%20to%20know%20about%20your%20mobile%20shop."
+    aria-label="Chat on WhatsApp"
+  >
+    💬
+  </a>
+
+
+  <!-- EMI CALCULATOR MODAL -->
+  <div class="modal-bg" id="emiBg">
+    <div class="modal small" style="margin-top:6vh">
+      <div class="modal-head"><h3>💳 EMI Calculator</h3><button class="x-btn" onclick="closeModals()" aria-label="Close">✕</button></div>
+      <b id="emiName" style="color:var(--ink)"></b>
+      <div style="color:var(--muted);font-size:14px">Price: <span id="emiPrice"></span></div>
+      <label for="emiDown">Down payment (₹)</label>
+      <input type="number" id="emiDown" min="0" step="500" oninput="calcEmi()" />
+      <label for="emiMonths">Months</label>
+      <select id="emiMonths" onchange="calcEmi()">
+        <option>3</option><option>6</option><option>9</option><option selected>12</option><option>18</option><option>24</option>
+      </select>
+      <div class="emi-box">
+        <div style="font-size:13px;color:var(--muted)">Monthly EMI</div>
+        <div class="emi-big" id="emiMonthly">₹0</div>
+        <div class="emi-row"><span>Loan amount</span><b id="emiLoan"></b></div>
+        <div class="emi-row"><span>Interest</span><b id="emiInt"></b></div>
+        <div class="emi-row"><span>Total payable</span><b id="emiTotal"></b></div>
+      </div>
+      <div class="emi-note" id="emiNote"></div>
+      <a class="btn btn-primary" id="emiWa" style="width:100%;margin-top:14px" target="_blank" rel="noopener">💬 Enquire with this EMI</a>
+    </div>
+  </div>
+
+  <!-- ADMIN LOGIN MODAL -->
+  <div class="modal-bg" id="loginBg">
+    <div class="modal small">
+      <div class="modal-head"><h3>🔒 Admin Login</h3><button class="x-btn" onclick="closeModals()">✕</button></div>
+      <label for="adminPass">Password</label>
+      <input type="password" id="adminPass" placeholder="Enter admin password" />
+      <div class="msg err" id="loginMsg"></div>
+      <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="doLogin()">Login</button>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL MODAL -->
+  <div class="modal-bg" id="adminBg">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>⚙️ Nisha Mobiles Admin</h3>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-outline" onclick="logout()">Logout</button>
+          <button class="x-btn" onclick="closeModals()">✕</button>
+        </div>
+      </div>
+
+      <div class="admin-tabs">
+        <button id="tabProducts" class="on" onclick="showTab('products')">📱 Mobiles</button>
+        <button id="tabOffers" onclick="showTab('offers')">🔥 Today's Offer</button>
+        <button id="tabSettings" onclick="showTab('settings')">🏪 Shop Settings</button>
+      </div>
+
+      <!-- Products tab -->
+      <div id="paneProducts">
+        <input type="hidden" id="pId" />
+        <label for="pName">Mobile name</label>
+        <input type="text" id="pName" placeholder="e.g. Redmi Note 13" />
+        <div class="row2">
+          <div><label for="pBrand">Brand</label><select id="pBrand"></select></div>
+          <div><label for="pPrice">Price (₹)</label><input type="number" id="pPrice" placeholder="19999" min="0" /></div>
+        </div>
+        <div class="row3">
+          <div><label for="pRam">RAM</label><select id="pRam"></select></div>
+          <div><label for="pStorage">Storage</label><select id="pStorage"></select></div>
+          <div><label for="pNet">Network</label><select id="pNet"></select></div>
+          <div><label for="pBattery">Battery</label><select id="pBattery"></select></div>
+          <div><label for="pCamera">Camera</label><select id="pCamera"></select></div>
+          <div><label for="pDisplay">Display</label><select id="pDisplay"></select></div>
+        </div>
+        <label for="pSpecs">Extra details (optional)</label>
+        <input type="text" id="pSpecs" placeholder="e.g. Dual SIM, Fast charging, 1 year warranty" />
+        <label for="pImg">Photo (optional)</label>
+        <input type="file" id="pImg" accept="image/*" />
+        <div class="msg" id="pMsg"></div>
+        <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+          <button class="btn btn-primary" id="pSave" onclick="saveProduct()">➕ Add Mobile</button>
+          <button class="btn btn-outline" onclick="resetForm()">Clear</button>
+        </div>
+        <div class="admin-list" id="adminList"></div>
+      </div>
+
+      <!-- Offers tab -->
+      <div id="paneOffers" style="display:none">
+        <input type="hidden" id="oId" />
+        <label for="oTitle">Offer title</label>
+        <input type="text" id="oTitle" placeholder="e.g. Diwali Special — Redmi 13 5G" />
+        <label for="oDetail">Details (optional)</label>
+        <input type="text" id="oDetail" placeholder="e.g. Free cover + tempered glass, exchange bonus" />
+        <div class="row2">
+          <div><label for="oTag">Highlight (optional)</label><input type="text" id="oTag" placeholder="₹2,000 OFF" /></div>
+          <div><label for="oTill">Valid till (optional)</label><input type="date" id="oTill" style="width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-family:inherit" /></div>
+        </div>
+        <div class="msg" id="oMsg"></div>
+        <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+          <button class="btn btn-primary" id="oSave" onclick="saveOffer()">➕ Add Offer</button>
+          <button class="btn btn-outline" onclick="resetOfferForm()">Clear</button>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:10px">Offers with a past "valid till" date hide from the page automatically.</p>
+        <div class="admin-list" id="offerAdminList"></div>
+      </div>
+
+      <!-- Settings tab -->
+      <div id="paneSettings" style="display:none">
+        <label for="sPhone">Shop phone / WhatsApp number (with country code, digits only)</label>
+        <input type="tel" id="sPhone" placeholder="919876543210" />
+        <label for="sRate">EMI interest rate (% per year, 0 for no-cost EMI)</label>
+        <input type="number" id="sRate" min="0" max="60" step="0.5" />
+        <label for="sNewPass">Change admin password (leave blank to keep)</label>
+        <input type="password" id="sNewPass" placeholder="New password" />
+        <div class="msg" id="sMsg"></div>
+        <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+          <button class="btn btn-danger" onclick="resetAll()">Reset everything</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("active");
+    }
+
+    // Close mobile menu after clicking a link
+    document.querySelectorAll("#nav a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.getElementById("nav").classList.remove("active");
+      });
+    });
+
+    // Current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+    /* ========= ADMIN + DYNAMIC PRODUCTS =========
+       Data is saved in THIS browser only (localStorage).
+       Default admin password: nisha123  (change it in Shop Settings) */
+    const DEFAULT_PHONE = "919876543210";
+    const DEFAULT_PRODUCTS = [
+      { id: 1, name: "Premium Phone",    specs: "8GB RAM • 256GB Storage",  price: 39999, img: "" },
+      { id: 2, name: "Pro Smartphone",   specs: "12GB RAM • 256GB Storage", price: 29999, img: "" },
+      { id: 3, name: "Smartphone Plus",  specs: "8GB RAM • 128GB Storage",  price: 19999, img: "" },
+      { id: 4, name: "Budget Smartphone",specs: "6GB RAM • 128GB Storage",  price: 12999, img: "" }
+    ];
+    const K = { prod: "nisha_products", phone: "nisha_phone", pass: "nisha_pass", rate: "nisha_emi_rate", offers: "nisha_offers" };
+    const DEFAULT_RATE = 12; // EMI interest, % per year (admin can change in Shop Settings)
+    const $ = id => document.getElementById(id);
+    const store = {
+      get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+      set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } },
+      del(k) { try { localStorage.removeItem(k); } catch (e) {} }
+    };
+    const esc = t => String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    let products = store.get(K.prod, DEFAULT_PRODUCTS);
+    let phone = store.get(K.phone, DEFAULT_PHONE);
+    let emiRate = store.get(K.rate, DEFAULT_RATE);
+    let offers = store.get(K.offers, []);
+    let activeBrand = ""; // "" = brand list, "__all" = every brand, otherwise one brand name
+    let pendingImg = null, loggedIn = false;
+
+    // Spec choices shown in the admin form (edit these lists to add more options)
+    const SPEC_OPTIONS = {
+      pBrand:   { key: "brand",   label: "Brand",   list: ["Samsung","Redmi","Realme","Vivo","Oppo","OnePlus","Apple","Poco","Motorola","iQOO","Nokia","Infinix","Tecno","Other"] },
+      pRam:     { key: "ram",     label: "RAM",     list: ["2GB","3GB","4GB","6GB","8GB","12GB","16GB"] },
+      pStorage: { key: "storage", label: "Storage", list: ["32GB","64GB","128GB","256GB","512GB","1TB"] },
+      pNet:     { key: "net",     label: "Network", list: ["4G","5G"] },
+      pBattery: { key: "battery", label: "Battery", list: ["4000 mAh","5000 mAh","6000 mAh","7000 mAh","10000 mAh"] },
+      pCamera:  { key: "camera",  label: "Camera",  list: ["13MP","50MP","64MP","108MP","200MP"] },
+      pDisplay: { key: "display", label: "Display", list: ["LCD","AMOLED","LCD 90Hz","AMOLED 120Hz"] }
+    };
+    Object.keys(SPEC_OPTIONS).forEach(id => {
+      const o = SPEC_OPTIONS[id];
+      $(id).innerHTML = `<option value="">Select ${o.label}</option>` + o.list.map(v => `<option>${v}</option>`).join("");
+    });
+    function readSpecs() { const sp = {}; Object.keys(SPEC_OPTIONS).forEach(id => sp[SPEC_OPTIONS[id].key] = $(id).value); return sp; }
+    function buildSpecs(p) {
+      const sp = p.sp || {}, parts = [];
+      if (sp.brand && sp.brand !== "Other") parts.push(sp.brand);
+      if (sp.ram) parts.push(sp.ram + " RAM");
+      if (sp.storage) parts.push(sp.storage + " Storage");
+      ["net","battery","camera","display"].forEach(k => { if (sp[k]) parts.push(sp[k]); });
+      if (p.specs) parts.push(p.specs);
+      return parts.join(" • ");
+    }
+    const fmt = n => "₹" + Number(n).toLocaleString("en-IN");
+
+    function waLink(text) { return "https://wa.me/" + phone + "?text=" + encodeURIComponent(text); }
+    function enquiryText(p) {
+      const sp = buildSpecs(p);
+      return "Hello Nisha Mobiles, I am interested in this phone:\n📱 " + p.name + (sp ? "\nSpecs: " + sp : "") + "\nPrice: " + fmt(p.price) + "\nPlease share availability.";
+    }
+
+    function brandOf(p) { return (p.sp && p.sp.brand) || "Other"; }
+
+
+    function productCard(p) {
+      const sp = p.sp || {};
+      const main = [sp.ram && sp.ram + " RAM", sp.storage].filter(Boolean).join(" + ");
+      const chips = [sp.battery && "🔋 " + sp.battery, sp.camera && "📷 " + sp.camera, sp.display && "✨ " + sp.display].filter(Boolean);
+      const brand = sp.brand && sp.brand !== "Other" ? `<span class="pill">${esc(sp.brand)}</span>` : "";
+      const five = sp.net === "5G" ? `<span class="pill five">5G</span>` : (sp.net ? `<span class="pill">${esc(sp.net)}</span>` : "");
+      return `
+        <div class="product">
+          <div class="product-img">
+            <div class="pill-row">${brand}${five}</div>
+            ${p.img ? `<img src="${p.img}" alt="${esc(p.name)}">` : `<span class="ph">📱</span>`}
+          </div>
+          <div class="product-info">
+            <h3>${esc(p.name)}</h3>
+            ${main ? `<div class="spec-main">${esc(main)}</div>` : ""}
+            ${chips.length ? `<div class="chips">${chips.map(c => `<span>${esc(c)}</span>`).join("")}</div>` : ""}
+            ${p.specs ? `<p class="extra">${esc(p.specs)}</p>` : ""}
+            <div class="price">${fmt(p.price)}</div>
+            <div class="card-actions">
+              <a class="small-btn" href="${waLink(enquiryText(p))}" target="_blank" rel="noopener">💬 Enquire Now</a>
+              <button type="button" class="emi-ico" onclick="openEmi(${p.id})" aria-label="Calculate EMI for ${esc(p.name)}">💳 EMI</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function allBrands() {
+      const listed = SPEC_OPTIONS.pBrand.list.filter(b => b !== "Other");
+      const extra = [...new Set(products.map(brandOf))].filter(b => b !== "Other" && !listed.includes(b));
+      const cnt = b => products.filter(x => brandOf(x) === b).length;
+      const arr = [...listed, ...extra].sort((a, b) => cnt(b) - cnt(a));
+      if (cnt("Other")) arr.push("Other");
+      return arr;
+    }
+    $("brandTabs").addEventListener("click", e => {
+      const b = e.target.closest("[data-b]"); if (!b) return;
+      activeBrand = b.dataset.b; renderProducts();
+      $("mobiles").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    function renderProducts() {
+      const tabs = $("brandTabs"), grid = $("productGrid"), cnt = b => products.filter(x => brandOf(x) === b).length;
+      if (activeBrand === "") {
+        tabs.className = "brand-grid";
+        tabs.innerHTML = allBrands().map(b => {
+          const c = cnt(b);
+          return `<button type="button" class="brand-tile${c ? "" : " empty"}" data-b="${esc(b)}"><span class="brand-logo">${esc(b.charAt(0))}</span><b>${esc(b === "Other" ? "More Mobiles" : b)}</b><small>${c} ${c === 1 ? "mobile" : "mobiles"}</small></button>`;
+        }).join("") + `<button type="button" class="brand-tile all" data-b="__all"><span class="brand-logo">★</span><b>All Mobiles</b><small>${products.length} total</small></button>`;
+        grid.innerHTML = ""; return;
+      }
+      tabs.className = "brand-bar";
+      tabs.innerHTML = `<button type="button" class="brand-back" data-b="">← All brands</button>`;
+      const brands = activeBrand === "__all" ? [...new Set(products.map(brandOf))] : [activeBrand];
+      grid.innerHTML = brands.map(b => {
+        const list = products.filter(p => brandOf(p) === b), label = b === "Other" ? "More Mobiles" : b;
+        return `<div class="brand-block">
+          <div class="brand-head"><h3>${esc(label)}</h3><span>${list.length} ${list.length === 1 ? "mobile" : "mobiles"}</span></div>
+          ${list.length ? `<div class="products">${list.map(productCard).join("")}</div>`
+            : `<p>No ${esc(label)} mobiles listed right now. <a href="${waLink("Hello Nisha Mobiles, do you have " + label + " phones available?")}" target="_blank" rel="noopener" style="color:var(--violet);font-weight:700">Ask us on WhatsApp</a></p>`}
+        </div>`;
+      }).join("") || "<p>No mobiles added yet.</p>";
+    }
+
+    function applyPhone() {
+      document.querySelectorAll('a[href*="wa.me/"], a[href^="tel:"]').forEach(a => {
+        a.href = a.href.replace(/wa\.me\/\d+/, "wa.me/" + phone).replace(/^tel:\+?\d+/, "tel:+" + phone);
+      });
+      document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+        if (a.textContent.includes("📞")) a.textContent = "📞 +" + phone.replace(/^(\d{2})(\d{5})(\d+)$/, "$1 $2 $3");
+      });
+    }
+
+    function renderAdminList() {
+      $("adminList").innerHTML = products.map(p => `
+        <div class="admin-item">
+          <div class="thumb">${p.img ? `<img src="${p.img}" alt="">` : "📱"}</div>
+          <div class="meta"><b>${esc(p.name)}</b><span>${esc(buildSpecs(p))} • ${fmt(p.price)}</span></div>
+          <button style="background:#eeeaff;color:var(--primary)" onclick="editProduct(${p.id})">Edit</button>
+          <button class="btn-danger" onclick="deleteProduct(${p.id})">Delete</button>
+        </div>`).join("") || "<p style='padding:14px 0;color:var(--muted)'>No mobiles yet.</p>";
+    }
+
+    function msg(id, text, ok) { const m = $(id); m.textContent = text; m.className = "msg " + (ok ? "ok" : "err"); }
+
+    function resetForm() {
+      ["pId","pName","pSpecs","pPrice"].forEach(i => $(i).value = "");
+      Object.keys(SPEC_OPTIONS).forEach(id => $(id).value = "");
+      $("pImg").value = ""; pendingImg = null; $("pSave").textContent = "➕ Add Mobile"; msg("pMsg", "", true);
+    }
+
+    // Resize uploaded photo so it fits in localStorage
+    $("pImg").addEventListener("change", e => {
+      const f = e.target.files[0]; if (!f) { pendingImg = null; return; }
+      const r = new FileReader();
+      r.onload = () => {
+        const im = new Image();
+        im.onload = () => {
+          const max = 500, sc = Math.min(1, max / Math.max(im.width, im.height));
+          const c = document.createElement("canvas");
+          c.width = Math.round(im.width * sc); c.height = Math.round(im.height * sc);
+          c.getContext("2d").drawImage(im, 0, 0, c.width, c.height);
+          pendingImg = c.toDataURL("image/jpeg", 0.75);
+        };
+        im.src = r.result;
+      };
+      r.readAsDataURL(f);
+    });
+
+    function saveProduct() {
+      const name = $("pName").value.trim(), specs = $("pSpecs").value.trim(), price = $("pPrice").value;
+      if (!name || price === "") { msg("pMsg", "Please enter the mobile name and price.", false); return; }
+      const id = $("pId").value;
+      if (id) {
+        const p = products.find(x => x.id == id);
+        Object.assign(p, { name, specs, sp: readSpecs(), price: Number(price) });
+        if (pendingImg) p.img = pendingImg;
+      } else {
+        products.push({ id: Date.now(), name, specs, sp: readSpecs(), price: Number(price), img: pendingImg || "" });
+      }
+      if (!store.set(K.prod, products)) { msg("pMsg", "Storage full — use a smaller photo.", false); return; }
+      renderProducts(); renderAdminList(); resetForm(); msg("pMsg", "Saved ✔", true);
+    }
+
+    function editProduct(id) {
+      const p = products.find(x => x.id == id); if (!p) return;
+      $("pId").value = p.id; $("pName").value = p.name; $("pSpecs").value = p.specs || ""; $("pPrice").value = p.price;
+      Object.keys(SPEC_OPTIONS).forEach(id => $(id).value = (p.sp && p.sp[SPEC_OPTIONS[id].key]) || "");
+      $("pSave").textContent = "💾 Update Mobile"; pendingImg = null; $("pImg").value = "";
+      $("paneProducts").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function deleteProduct(id) {
+      if (!confirm("Delete this mobile?")) return;
+      products = products.filter(x => x.id != id);
+      store.set(K.prod, products); renderProducts(); renderAdminList(); resetForm();
+    }
+
+    function showTab(t) {
+      ["products","offers","settings"].forEach(n => {
+        const N = n[0].toUpperCase() + n.slice(1);
+        $("pane" + N).style.display = t === n ? "" : "none";
+        $("tab" + N).classList.toggle("on", t === n);
+      });
+      if (t === "settings") { $("sPhone").value = phone; $("sRate").value = emiRate; }
+      if (t === "offers") renderOfferAdmin();
+    }
+
+    function saveSettings() {
+      const ph = $("sPhone").value.replace(/\D/g, "");
+      if (ph.length < 10) { msg("sMsg", "Enter a valid number with country code, e.g. 919876543210.", false); return; }
+      const rt = parseFloat($("sRate").value);
+      if (isNaN(rt) || rt < 0 || rt > 60) { msg("sMsg", "EMI interest rate must be between 0 and 60.", false); return; }
+      emiRate = rt; store.set(K.rate, emiRate);
+      phone = ph; store.set(K.phone, phone);
+      const np = $("sNewPass").value;
+      if (np) { if (np.length < 4) { msg("sMsg", "Password must be at least 4 characters.", false); return; } store.set(K.pass, np); $("sNewPass").value = ""; }
+      renderProducts(); applyPhone(); msg("sMsg", "Settings saved ✔", true);
+    }
+
+    function resetAll() {
+      if (!confirm("Reset all mobiles, phone number and password to defaults?")) return;
+      store.del(K.prod); store.del(K.phone); store.del(K.pass); store.del(K.rate); store.del(K.offers); emiRate = DEFAULT_RATE; offers = []; renderOffers();
+      products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS)); phone = DEFAULT_PHONE;
+      renderProducts(); renderAdminList(); applyPhone(); $("sPhone").value = phone; $("sRate").value = emiRate; msg("sMsg", "Reset done.", true);
+    }
+
+    function openAdmin() {
+      if (loggedIn) { $("adminBg").classList.add("open"); renderAdminList(); return; }
+      $("loginMsg").textContent = ""; $("adminPass").value = ""; $("loginBg").classList.add("open");
+      setTimeout(() => $("adminPass").focus(), 50);
+    }
+    function doLogin() {
+      if ($("adminPass").value === store.get(K.pass, "nisha123")) {
+        loggedIn = true; closeModals(); $("adminBg").classList.add("open"); showTab("products"); renderAdminList();
+      } else { $("loginMsg").textContent = "Wrong password."; }
+    }
+    function logout() { loggedIn = false; closeModals(); }
+    function closeModals() { ["loginBg","adminBg","emiBg"].forEach(id => $(id).classList.remove("open")); }
+    $("adminPass").addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeModals(); });
+    ["loginBg","adminBg","emiBg"].forEach(id => $(id).addEventListener("mousedown", e => { if (e.target.id === id) closeModals(); }));
+
+
+    /* ========= EMI CALCULATOR ========= */
+    let emiP = null;
+    function openEmi(id) {
+      emiP = products.find(x => x.id == id); if (!emiP) return;
+      $("emiName").textContent = emiP.name; $("emiPrice").textContent = fmt(emiP.price);
+      $("emiDown").value = Math.round(emiP.price * 0.2 / 500) * 500; $("emiMonths").value = "12";
+      calcEmi(); $("emiBg").classList.add("open");
+    }
+    function calcEmi() {
+      if (!emiP) return;
+      const price = emiP.price, n = Number($("emiMonths").value);
+      const down = Math.min(price, Math.max(0, Number($("emiDown").value) || 0));
+      const loan = price - down, r = emiRate / 12 / 100;
+      const emi = loan === 0 ? 0 : (r > 0 ? loan * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1) : loan / n);
+      const paid = emi * n, interest = Math.max(0, paid - loan);
+      $("emiMonthly").textContent = fmt(Math.round(emi));
+      $("emiLoan").textContent = fmt(Math.round(loan));
+      $("emiInt").textContent = fmt(Math.round(interest));
+      $("emiTotal").textContent = fmt(Math.round(down + paid));
+      $("emiNote").textContent = (loan === 0 ? "Down payment covers the full price — no EMI needed. " : "") +
+        "Approximate figures at " + emiRate + "% per year. Final EMI depends on the finance partner and your documents.";
+      const txt = "Hello Nisha Mobiles, I want to buy on EMI:\n📱 " + emiP.name + "\nPrice: " + fmt(price) +
+        "\nDown payment: " + fmt(Math.round(down)) + "\nMonths: " + n + "\nApprox. EMI: " + fmt(Math.round(emi)) + "/month\nPlease share the details.";
+      $("emiWa").href = waLink(txt);
+    }
+
+
+    /* ========= TODAY'S OFFER BOARD ========= */
+    const todayStr = () => new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+    const isActive = o => !o.till || o.till >= todayStr();
+    const fmtDate = d => new Date(d + "T00:00:00").toLocaleDateString("en-IN", { day: "numeric", month: "short" });
+
+    function offerText(o) {
+      return "Hello Nisha Mobiles, I am interested in this offer:\n🔥 " + o.title +
+        (o.detail ? "\nDetails: " + o.detail : "") + (o.tag ? "\nOffer: " + o.tag : "") +
+        (o.till ? "\nValid till: " + fmtDate(o.till) : "") + "\nPlease share the details.";
+    }
+
+    function renderOffers() {
+      const act = offers.filter(isActive);
+      $("offerList").innerHTML = act.map(o => `
+        <div class="offer-item">
+          <div><b>${esc(o.title)}</b>${o.detail ? `<span class="d">${esc(o.detail)}</span>` : ""}${o.till ? `<small>Valid till ${fmtDate(o.till)}</small>` : ""}</div>
+          <div class="offer-side">
+            ${o.tag ? `<span class="offer-tag">${esc(o.tag)}</span>` : ""}
+            <a class="offer-enq" href="${waLink(offerText(o))}" target="_blank" rel="noopener">💬 Enquire</a>
+          </div>
+        </div>`).join("");
+      $("offerSub").textContent = act.length ? "Fresh deals from our store, updated by the shop." : "Visit our store for today's latest deals, exchange offers and accessories.";
+      const lines = act.map(o => "• " + o.title + (o.tag ? " (" + o.tag + ")" : "")).join("\n");
+      $("offerCta").href = waLink("Hello Nisha Mobiles, please send me today's offers." + (lines ? "\nI saw these on your website:\n" + lines : ""));
+    }
+
+    function renderOfferAdmin() {
+      $("offerAdminList").innerHTML = offers.map(o => `
+        <div class="admin-item">
+          <div class="thumb">🔥</div>
+          <div class="meta"><b>${esc(o.title)}</b><span>${esc([o.tag, o.detail, o.till ? "till " + fmtDate(o.till) : ""].filter(Boolean).join(" • "))}${isActive(o) ? "" : " • EXPIRED (hidden)"}</span></div>
+          <button style="background:#eeeaff;color:var(--primary)" onclick="editOffer(${o.id})">Edit</button>
+          <button class="btn-danger" onclick="deleteOffer(${o.id})">Delete</button>
+        </div>`).join("") || "<p style='padding:14px 0;color:var(--muted)'>No offers yet. Add today's offer above.</p>";
+    }
+
+    function resetOfferForm() {
+      ["oId","oTitle","oDetail","oTag","oTill"].forEach(i => $(i).value = "");
+      $("oSave").textContent = "➕ Add Offer"; msg("oMsg", "", true);
+    }
+
+    function saveOffer() {
+      const title = $("oTitle").value.trim();
+      if (!title) { msg("oMsg", "Please enter the offer title.", false); return; }
+      const data = { title, detail: $("oDetail").value.trim(), tag: $("oTag").value.trim(), till: $("oTill").value };
+      const id = $("oId").value;
+      if (id) Object.assign(offers.find(x => x.id == id), data); else offers.unshift({ id: Date.now(), ...data });
+      if (!store.set(K.offers, offers)) { msg("oMsg", "Could not save in this browser.", false); return; }
+      renderOffers(); renderOfferAdmin(); resetOfferForm(); msg("oMsg", "Offer saved ✔", true);
+    }
+
+    function editOffer(id) {
+      const o = offers.find(x => x.id == id); if (!o) return;
+      $("oId").value = o.id; $("oTitle").value = o.title; $("oDetail").value = o.detail || ""; $("oTag").value = o.tag || ""; $("oTill").value = o.till || "";
+      $("oSave").textContent = "💾 Update Offer"; $("paneOffers").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function deleteOffer(id) {
+      if (!confirm("Delete this offer?")) return;
+      offers = offers.filter(x => x.id != id); store.set(K.offers, offers); renderOffers(); renderOfferAdmin(); resetOfferForm();
+    }
+
+    renderProducts(); applyPhone(); renderOffers();
+  </script>
+
+</body>
+</html>
