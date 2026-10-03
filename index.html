@@ -415,7 +415,7 @@ gap: 10px;
     /* SERVICES */
     .services {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
 
@@ -725,7 +725,9 @@ gap: 10px;
     .offer-side { display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
     .offer-enq { background:#25d366; color:#06371a; font-weight:700; font-size:13px; padding:8px 14px; border-radius:999px; white-space:nowrap; font-family:Sora,Manrope,sans-serif; transition:transform .2s; }
     .offer-enq:hover { transform:translateY(-2px); }
-    @media (max-width:650px){ .offer-item { flex-direction:column; align-items:flex-start; } .offer-side { justify-content:flex-start; } }
+    .offer-main { display:flex; align-items:center; gap:14px; min-width:0; }
+    .offer-img { width:92px; height:92px; border-radius:16px; object-fit:cover; flex:none; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.08); }
+    @media (max-width:650px){ .offer-item { flex-direction:column; align-items:flex-start; } .offer-side { justify-content:flex-start; } .offer-img { width:76px; height:76px; } .offer-enq { padding:10px 18px; } }
     .brand-tabs { display:flex; gap:10px; overflow-x:auto; padding:2px 2px 18px; margin-bottom:10px; scrollbar-width:thin; }
     .brand-chip { flex:none; border:1px solid var(--line); background:#fff; color:var(--ink); font:600 14px Manrope,sans-serif; padding:10px 18px; border-radius:999px; cursor:pointer; transition:background .2s,color .2s,border-color .2s; }
     .brand-chip small { opacity:.55; font-weight:700; margin-left:4px; }
@@ -974,6 +976,139 @@ gap: 10px;
       .admin-item { flex-wrap: wrap; }
     }
     @media (prefers-reduced-motion: reduce) { .modal-bg.open .modal { animation: none; } }
+
+    /* ===== KEYPAD MOBILES ===== */
+    #keypad { background: var(--porcelain); scroll-margin-top: 76px; }
+    .keypad-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; }
+    .keypad-card { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 28px 18px 22px; text-align: center; box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: center; transition: transform .25s, border-color .25s, box-shadow .25s; }
+    .keypad-card:hover { transform: translateY(-6px); border-color: rgba(106,77,255,.35); box-shadow: 0 2px 4px rgba(15,12,36,.05), 0 30px 46px -22px rgba(106,77,255,.4); }
+    .keypad-logo { width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 14px; background: linear-gradient(145deg, var(--ink), var(--ink-2)); color: #f1dcb4; font: 700 28px Sora, Manrope, sans-serif; box-shadow: 0 14px 24px -12px rgba(15,12,36,.6); }
+    .keypad-card h3 { font-size: 19px; color: var(--ink); margin-bottom: 4px; }
+    .keypad-card p { font-size: 13.5px; color: var(--muted); margin-bottom: 16px; }
+    .keypad-card .small-btn { margin-top: auto; width: 100%; padding: 12px 10px; font-size: 14px; }
+
+    /* ===== ACCESSORIES: COVERS + TEMPERED GLASS ===== */
+    #accessories { scroll-margin-top: 76px; }
+    .acc-group { margin-bottom: 56px; }
+    .acc-group:last-child { margin-bottom: 0; }
+    .acc-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+    .acc-head h3 { font-size: clamp(24px, 3vw, 32px); font-weight: 600; letter-spacing: -.03em; color: var(--ink); }
+    .acc-head span { background: var(--violet-soft); color: var(--violet); padding: 5px 13px; border-radius: 999px; font-size: 13px; font-weight: 700; }
+    .acc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
+    .acc-card { background: #fff; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .25s, border-color .25s, box-shadow .25s; }
+    .acc-card:hover { transform: translateY(-6px); border-color: rgba(106,77,255,.35); box-shadow: 0 2px 4px rgba(15,12,36,.05), 0 30px 46px -22px rgba(106,77,255,.4); }
+    .acc-img { height: 190px; display: grid; place-items: center; background: radial-gradient(75% 65% at 50% 38%, #fff 0%, #efecfb 62%, #e4e0f6 100%); font-size: 70px; overflow: hidden; }
+    .acc-img img { width: 100%; height: 100%; object-fit: cover; }
+    .acc-info { padding: 16px 16px 18px; display: flex; flex-direction: column; flex: 1; }
+    .acc-info h4 { font: 600 16px Sora, Manrope, sans-serif; color: var(--ink); margin-bottom: 4px; }
+    .acc-price { font: 700 18px Sora, Manrope, sans-serif; color: var(--violet); margin-bottom: 4px; }
+    .acc-info .small-btn { margin-top: auto; padding: 11px 10px; font-size: 14px; }
+    .acc-info h4 + .small-btn { margin-top: 12px; }
+
+    /* ===== TODAY'S OFFER INSIDE HERO PHONE ===== */
+    .phone-content { left: 22px; right: 22px; bottom: 26px; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; }
+    .phone-content h2 { font-size: 26px; line-height: 1.15; margin: 4px 0 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .po-label { font: 700 12px Manrope, sans-serif; letter-spacing: .08em; color: #f1dcb4; margin-bottom: 10px; }
+    .po-img { width: 100%; height: auto; max-height: 240px; object-fit: contain; border-radius: 18px; margin-bottom: 12px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.28); box-shadow: 0 18px 30px -16px rgba(0,0,0,.6); }
+    .phone-screen { min-height: 620px; }
+    .po-tag { background: linear-gradient(135deg, #e3c795, #c9a36a); color: var(--ink); font: 700 14px Sora, Manrope, sans-serif; padding: 6px 14px; border-radius: 999px; margin-bottom: 6px; }
+    .po-detail { font-size: 14px; color: rgba(255,255,255,.82); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .po-till { font-size: 12px; color: #f1dcb4; margin-top: 4px; }
+    .po-btn { display: block; width: 100%; text-align: center; margin-top: 14px; padding: 13px 10px; border-radius: 999px; background: #25d366; color: #06371a !important; font: 700 15px Sora, Manrope, sans-serif; transition: transform .2s; }
+    .po-btn:hover { transform: translateY(-2px); }
+    .po-dots { display: flex; gap: 7px; justify-content: center; width: 100%; margin-top: 12px; }
+    .po-dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.35); cursor: pointer; }
+    .po-dots button.on { background: #f1dcb4; width: 22px; border-radius: 8px; }
+
+    /* ===== CONTACT INFORMATION — DARK LUXURY CARD ===== */
+    .contact-grid { align-items: stretch; gap: 28px; }
+    .contact-card { position: relative; overflow: hidden; padding: 34px 30px; border: 1px solid rgba(255,255,255,.1); border-radius: 28px; color: #fff;
+      background: radial-gradient(70% 60% at 100% 0%, rgba(106,77,255,.5), transparent 65%), radial-gradient(50% 40% at 0% 100%, rgba(201,163,106,.18), transparent 70%), linear-gradient(145deg, var(--ink), var(--ink-2));
+      box-shadow: 0 40px 70px -35px rgba(15,12,36,.7); }
+    .contact-card .contact-item { margin: 0 0 14px; padding: 16px 18px; align-items: center; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; box-shadow: none; backdrop-filter: blur(8px); transition: border-color .25s, background .25s, transform .25s; }
+    .contact-card .contact-item:hover { transform: translateX(4px); border-color: rgba(227,199,149,.6); background: rgba(255,255,255,.1); }
+    .contact-card .contact-item-icon { width: 48px; height: 48px; flex: 0 0 48px; border-radius: 14px; font-size: 21px; background: linear-gradient(145deg, #e3c795, #c9a36a); box-shadow: 0 10px 20px -10px rgba(201,163,106,.8); }
+    .contact-card .contact-item h4 { font: 700 11.5px Manrope, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #e3c795; margin-bottom: 3px; }
+    .contact-card .contact-item p { color: rgba(255,255,255,.9); font-size: 15.5px; line-height: 1.5; }
+    .contact-card .contact-item p a { font: 700 21px Sora, Manrope, sans-serif; color: #fff; letter-spacing: .01em; }
+    .contact-card .contact-item p a:hover { color: #f1dcb4; }
+    .contact-card .buttons { margin-top: 22px; gap: 12px; }
+    .contact-card .buttons .btn { flex: 1 1 150px; }
+    .contact-card .btn-primary { background: linear-gradient(135deg, #e3c795, #c9a36a); color: var(--ink); box-shadow: 0 14px 26px -12px rgba(201,163,106,.8); }
+    .contact-card .btn-primary:hover { background: linear-gradient(135deg, #f1dcb4, #d9b377); }
+    .contact-card .btn-outline { background: #25d366; color: #06371a; border-color: transparent; }
+    .contact-card .btn-outline:hover { background: #3be07b; color: #06371a; border-color: transparent; }
+    .map-card { display: flex; padding: 14px; border-radius: 28px; }
+    .map-card .map-placeholder { flex: 1; min-height: 340px; border-radius: 20px; border: 1px dashed #cfc9ea; }
+    .map-card .map-placeholder > div { max-width: 300px; }
+    .contact-card .contact-item p a.alt-wa { font: 600 13px Manrope, sans-serif; color: #7ff0a8; letter-spacing: 0; }
+    .contact-card .contact-item p a.alt-wa:hover { color: #b6f7cf; }
+    @media (max-width: 650px) { .contact-card { padding: 24px 18px; } .contact-card .contact-item p a { font-size: 19px; } }
+
+    /* ===== SERVICES — DARK GLASS CARDS ===== */
+    #services { background: radial-gradient(55% 45% at 85% 0%, rgba(106,77,255,.38), transparent 70%), radial-gradient(45% 40% at 0% 100%, rgba(201,163,106,.15), transparent 70%), var(--ink); }
+    #services .section-head h2 { color: #fff; }
+    #services .section-head p { color: rgba(255,255,255,.65); }
+    #services .services { counter-reset: svc; gap: 22px; }
+    #services .service { counter-increment: svc; position: relative; overflow: hidden; padding: 34px 26px 32px; border-radius: 26px; background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 30px 50px -34px rgba(0,0,0,.7); backdrop-filter: blur(10px); transition: transform .3s, border-color .3s, box-shadow .3s; }
+    #services .service::before { content: counter(svc, decimal-leading-zero); position: absolute; top: 12px; right: 20px; font: 700 56px Sora, Manrope, sans-serif; color: rgba(255,255,255,.07); line-height: 1; }
+    #services .service::after { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: linear-gradient(90deg, #e3c795, #c9a36a); transition: width .4s; }
+    #services .service:hover { transform: translateY(-8px); border-color: rgba(227,199,149,.6); box-shadow: 0 40px 64px -28px rgba(106,77,255,.6); }
+    #services .service:hover::after { width: 100%; }
+    #services .service-icon { width: 64px; height: 64px; display: grid; place-items: center; margin-bottom: 20px; border-radius: 20px; font-size: 30px; background: linear-gradient(145deg, #e3c795, #c9a36a); box-shadow: 0 14px 26px -12px rgba(201,163,106,.8); }
+    #services .service h3 { color: #fff; font-size: 20px; margin-bottom: 8px; }
+    #services .service p { color: rgba(255,255,255,.7); font-size: 14.5px; line-height: 1.65; }
+    @media (max-width: 900px) { #services .services { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 650px) { #services .services { grid-template-columns: 1fr; } }
+
+    /* ===== FEATURES (Latest Mobiles / Best Prices / ...) ===== */
+    #features { padding: 80px 0 70px; background: linear-gradient(180deg, #fff, var(--porcelain)); }
+    #features .features { gap: 20px; }
+    #features .feature { position: relative; overflow: hidden; padding: 28px 24px 26px; border-radius: 24px; border: 1px solid var(--line); background: linear-gradient(160deg, #fff 55%, #f3f0ff); box-shadow: 0 1px 2px rgba(15,12,36,.04), 0 16px 30px -20px rgba(15,12,36,.25); transition: transform .3s, border-color .3s, box-shadow .3s; }
+    #features .feature::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--violet), #e3c795); }
+    #features .feature:hover { transform: translateY(-6px); border-color: rgba(106,77,255,.4); box-shadow: 0 2px 4px rgba(15,12,36,.05), 0 30px 48px -22px rgba(106,77,255,.45); }
+    #features .feature-icon { width: 58px; height: 58px; border-radius: 18px; font-size: 27px; margin-bottom: 18px; background: linear-gradient(145deg, #7b60ff, #4f35d8); box-shadow: 0 14px 24px -10px rgba(106,77,255,.7); }
+    #features .feature h3 { font-size: 18px; color: var(--ink); margin-bottom: 6px; }
+    #features .feature p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    @media (max-width: 650px) {
+      #features { padding: 48px 0 40px; }
+      #features .features { gap: 14px; }
+      #features .feature { display: grid; grid-template-columns: 58px 1fr; column-gap: 16px; align-items: center; padding: 18px 18px 18px 20px; border-radius: 20px; }
+      #features .feature::before { top: 0; bottom: 0; right: auto; width: 4px; height: auto; background: linear-gradient(180deg, var(--violet), #e3c795); }
+      #features .feature-icon { grid-row: 1 / span 2; margin: 0; }
+      #features .feature h3 { margin: 0 0 2px; align-self: end; }
+      #features .feature p { align-self: start; }
+    }
+
+    .map-card { flex-direction: column; gap: 12px; }
+    .map-card .map-btn { width: auto; padding: 6px 6px 6px 20px; font-size: 13px; gap: 12px; background: var(--ink); color: #fff; border: 1px solid rgba(201,163,106,.7); box-shadow: 0 14px 26px -14px rgba(15,12,36,.7); }
+    .map-card .map-btn::after { content: "\27A4"; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: linear-gradient(135deg, #e3c795, #c9a36a); color: var(--ink); font-size: 13px; transform: rotate(-45deg); transition: transform .3s; }
+    .map-card .map-btn:hover { background: var(--violet); border-color: var(--violet); transform: translateY(-2px); }
+    .map-card .map-btn:hover::after { transform: rotate(0deg); }
+
+    /* ===== BRAND TILES — COLOURED GLASS ===== */
+    .products-section .brand-grid { gap: 16px; }
+    .products-section .brand-grid .brand-tile:not(.all) { position: relative; overflow: hidden; padding: 26px 12px 20px; border-radius: 26px;
+      background: radial-gradient(90% 80% at 50% 0%, color-mix(in srgb, var(--bc) 26%, transparent), transparent 72%), linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      border: 1px solid color-mix(in srgb, var(--bc) 38%, rgba(255,255,255,.08)); box-shadow: inset 0 1px 0 rgba(255,255,255,.12); }
+    .products-section .brand-grid .brand-tile:not(.all) .brand-logo { width: 74px; height: 74px; font-size: 30px; color: var(--bt, #fff);
+      background: linear-gradient(145deg, rgba(255,255,255,.4), rgba(255,255,255,0) 55%), var(--bc);
+      box-shadow: 0 16px 28px -10px color-mix(in srgb, var(--bc) 85%, transparent), inset 0 0 0 1px rgba(255,255,255,.3); }
+    .products-section .brand-grid .brand-tile:not(.all):hover { transform: translateY(-6px); border-color: var(--bc); box-shadow: 0 28px 46px -24px var(--bc), inset 0 1px 0 rgba(255,255,255,.18); }
+    .products-section .brand-grid .brand-tile:not(.all):hover .brand-logo { color: var(--bt, #fff); background: linear-gradient(145deg, rgba(255,255,255,.5), rgba(255,255,255,0) 55%), var(--bc); transform: scale(1.06); }
+    .products-section .brand-grid .brand-tile:not(.all) .brand-logo { transition: transform .3s; }
+    .products-section .brand-grid .brand-tile:not(.all) b { font-size: 16px; }
+    .products-section .brand-grid .brand-tile:not(.all) small { display: inline-block; margin-top: 7px; padding: 3px 11px; border-radius: 999px; background: rgba(255,255,255,.1); color: rgba(255,255,255,.85); font-size: 12px; }
+    .products-section .brand-grid .brand-tile.empty:not(.all) { opacity: .62; filter: saturate(.7); }
+    .products-section .brand-grid .brand-tile.empty:not(.all):hover { opacity: 1; filter: none; }
+
+    .logo-icon { position: relative; width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; font: 800 24px Sora, Manrope, sans-serif; line-height: 1; letter-spacing: -.02em; color: #f1dcb4; text-shadow: 0 0 14px rgba(227,199,149,.55);
+      background: radial-gradient(80% 80% at 30% 15%, rgba(106,77,255,.6), transparent 70%), linear-gradient(145deg, #1b1740, #0f0c24);
+      border: 1.5px solid #c9a36a; box-shadow: 0 8px 20px -8px rgba(201,163,106,.6), inset 0 1px 0 rgba(255,255,255,.14); }
+    .logo-icon::after { content: ""; position: absolute; right: 6px; bottom: 6px; width: 5px; height: 5px; border-radius: 50%; background: #e3c795; }
+    .foot-logo { display: flex; align-items: center; gap: 10px; }
+    .foot-logo .logo-icon { width: 36px; height: 36px; border-radius: 12px; font-size: 20px; }
+    .foot-logo .logo-icon::after { right: 5px; bottom: 5px; width: 4px; height: 4px; }
   </style>
 </head>
 
@@ -986,7 +1121,7 @@ gap: 10px;
     <div class="container nav">
 <!-- CHANGE SHOP NAME HERE -->
       <a href="#home" class="logo">
-        <span class="logo-icon">📱</span>
+        <span class="logo-icon">N</span>
         <span>NISHA MOBILES</span>
       </a>
 
@@ -995,11 +1130,13 @@ gap: 10px;
       <nav id="nav">
         <a href="#home">Home</a>
         <a href="#mobiles">Mobiles</a>
+        <a href="#keypad">Keypad</a>
+        <a href="#accessories">Accessories</a>
         <a href="#services">Services</a>
         <a href="#offers">Offers</a>
         <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
-        <a class="nav-btn" href="tel:+919876543210">Call Now</a>
+        <a class="nav-btn" href="tel:+919994668101">Call Now</a>
       </nav>
 
     </div>
@@ -1032,25 +1169,21 @@ gap: 10px;
               📱 View Mobiles
             </a>
 
-            <a href="https://wa.me/919876543210?text=Hello%20I%20want%20to%20know%20about%20your%20mobile%20phones."
+            <a href="https://wa.me/919994668101?text=Hello%20I%20want%20to%20know%20about%20your%20mobile%20phones."
                class="btn btn-outline">
               💬 WhatsApp Us
             </a>
           </div>
         </div>
 
-        <div class="phone-card">
+        <div class="phone-card" id="offers">
           <div class="phone-screen">
             <div class="phone-top">
               <span>9:41</span>
               <span>● ● ●</span>
             </div>
 
-            <div class="phone-content">
-              <small>NEW ARRIVAL</small>
-              <h2>Latest<br>Smartphones</h2>
-              <p>Available Now</p>
-            </div>
+            <div class="phone-content" id="phoneOffer"></div>
           </div>
         </div>
 
@@ -1061,7 +1194,7 @@ gap: 10px;
     <!-- =========================
          FEATURES
     ========================== -->
-    <section>
+    <section id="features">
       <div class="container">
 
         <div class="features">
@@ -1113,18 +1246,29 @@ gap: 10px;
 
 
     <!-- =========================
-         OFFER
+         KEYPAD MOBILES (5 BRANDS)
     ========================== -->
-    <section id="offers">
+    <section id="keypad">
       <div class="container">
-        <div class="offer">
-          <div>
-            <h2>🔥 Today's Offers</h2>
-            <p id="offerSub">Visit our store for today's latest deals, exchange offers and accessories.</p>
-            <div class="offer-list" id="offerList"></div>
-          </div>
-          <a id="offerCta" class="btn" target="_blank" rel="noopener">Get Today's Offers</a>
+        <div class="section-head">
+          <h2>Keypad Mobiles</h2>
+          <p>Simple, durable keypad phones from five trusted brands</p>
         </div>
+        <div class="keypad-grid" id="keypadGrid"></div>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         ACCESSORIES: COVERS + TEMPERED GLASS
+    ========================== -->
+    <section id="accessories">
+      <div class="container">
+        <div class="section-head">
+          <h2>Covers &amp; Tempered Glass</h2>
+          <p>Protect your phone &mdash; all models available, just tell us your phone model</p>
+        </div>
+        <div id="accGrid"></div>
       </div>
     </section>
 
@@ -1153,9 +1297,10 @@ gap: 10px;
 
           <div class="service">
             <div class="service-icon">🎧</div>
-            <h3>Accessories</h3>
+            <h3>All Mobile Accessories</h3>
             <p>
-              Cases, screen protectors, chargers, cables, earbuds and more.
+              Chargers, cables, covers, tempered glass, earphones, power banks
+              and all other mobile accessories available in one place.
             </p>
           </div>
 
@@ -1165,6 +1310,15 @@ gap: 10px;
             <p>
               Bring your old phone and ask us about available exchange
               options.
+            </p>
+          </div>
+
+          <div class="service">
+            <div class="service-icon">💻</div>
+            <h3>Laptop Service</h3>
+            <p>
+              Laptop repair and service: software, OS install, screen,
+              battery, keyboard and other common problems.
             </p>
           </div>
 
@@ -1239,8 +1393,8 @@ gap: 10px;
               <div>
                 <h4>Address</h4>
                 <p>
-                  Main Road, Your Town,<br>
-                  Tamil Nadu, India
+                  Nisha Mobiles<br>
+                  Tamil Nadu, India &middot; tap Get Directions for the map
                 </p>
               </div>
             </div>
@@ -1248,9 +1402,20 @@ gap: 10px;
             <div class="contact-item">
               <div class="contact-item-icon">📞</div>
               <div>
-                <h4>Phone</h4>
+                <h4>Phone &amp; WhatsApp</h4>
                 <p>
-                  <a href="tel:+919876543210">+91 98765 43210</a>
+                  <a href="tel:+919994668101">+91 99946 68101</a><br>
+                  <a class="alt-wa" href="https://wa.me/919994668101?text=Hello%20Nisha%20Mobiles%2C%20I%20would%20like%20to%20enquire%20about%20your%20mobiles%20and%20offers.%20Please%20share%20the%20details." target="_blank" rel="noopener">💬 Send enquiry on WhatsApp</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">☎️</div>
+              <div>
+                <h4>Alternate Phone (Call only)</h4>
+                <p>
+                  <a href="tel:+919629247217" data-fixed>+91 96292 47217</a>
                 </p>
               </div>
             </div>
@@ -1267,11 +1432,11 @@ gap: 10px;
             </div>
 
             <div class="buttons">
-              <a href="tel:+919876543210" class="btn btn-primary">
+              <a href="tel:+919994668101" class="btn btn-primary">
                 📞 Call Shop
               </a>
 
-              <a href="https://wa.me/919876543210"
+              <a href="https://wa.me/919994668101?text=Hello%20Nisha%20Mobiles%2C%20I%20would%20like%20to%20enquire%20about%20your%20mobiles%20and%20offers.%20Please%20share%20the%20details."
                  class="btn btn-outline">
                 💬 WhatsApp
               </a>
@@ -1284,17 +1449,11 @@ gap: 10px;
             <div class="map-placeholder">
               <div>
                 <div style="font-size:42px;">📍</div>
-                <h3>Find Us on Google Maps</h3>
+                <h3>Nisha Mobiles</h3>
                 <p style="color:#6b7280; margin:6px 0 15px;">
-                  Replace this button with the shop's actual Google Maps link.
+                  Open our shop location in Google Maps.
                 </p>
-
-                <!-- REPLACE THIS LINK -->
-                <a href="https://www.google.com/maps"
-                   target="_blank"
-                   class="btn btn-primary">
-                  Get Directions
-                </a>
+                <a href="https://maps.app.goo.gl/EPMFowQY7bogj99c7" target="_blank" rel="noopener" class="btn btn-primary map-btn">Get Directions</a>
               </div>
             </div>
           </div>
@@ -1316,7 +1475,7 @@ gap: 10px;
       <div class="footer-grid">
 
         <div>
-          <h3>📱 NISHA MOBILES</h3>
+          <h3 class="foot-logo"><span class="logo-icon">N</span><span>NISHA MOBILES</span></h3>
           <p>
             Your trusted local destination for smartphones,
             accessories and mobile services.
@@ -1333,8 +1492,8 @@ gap: 10px;
 
         <div>
           <h3>Contact</h3>
-          <a href="tel:+919876543210">📞 +91 98765 43210</a>
-          <a href="https://wa.me/919876543210">💬 WhatsApp</a>
+          <a href="tel:+919994668101">📞 +91 99946 68101</a>
+          <a href="https://wa.me/919994668101">💬 WhatsApp</a>
           <a href="#contact">📍 Visit Store</a>
         </div>
 
@@ -1352,7 +1511,7 @@ gap: 10px;
   <!-- WHATSAPP FLOATING BUTTON -->
   <a
     class="whatsapp"
-    href="https://wa.me/919876543210?text=Hello%2C%20I%20would%20like%20to%20know%20about%20your%20mobile%20shop."
+    href="https://wa.me/919994668101?text=Hello%2C%20I%20would%20like%20to%20know%20about%20your%20mobile%20shop."
     aria-label="Chat on WhatsApp"
   >
     💬
@@ -1408,8 +1567,10 @@ gap: 10px;
       <div class="admin-tabs">
         <button id="tabProducts" class="on" onclick="showTab('products')">📱 Mobiles</button>
         <button id="tabOffers" onclick="showTab('offers')">🔥 Today's Offer</button>
+        <button id="tabAccessories" onclick="showTab('accessories')">🛡️ Covers &amp; Glass</button>
         <button id="tabSettings" onclick="showTab('settings')">🏪 Shop Settings</button>
       </div>
+      <div class="msg" id="syncMsg"></div>
 
       <!-- Products tab -->
       <div id="paneProducts">
@@ -1451,6 +1612,8 @@ gap: 10px;
           <div><label for="oTag">Highlight (optional)</label><input type="text" id="oTag" placeholder="₹2,000 OFF" /></div>
           <div><label for="oTill">Valid till (optional)</label><input type="date" id="oTill" style="width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-family:inherit" /></div>
         </div>
+        <label for="oImg">Offer photo (optional)</label>
+        <input type="file" id="oImg" accept="image/*" />
         <div class="msg" id="oMsg"></div>
         <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
           <button class="btn btn-primary" id="oSave" onclick="saveOffer()">➕ Add Offer</button>
@@ -1460,12 +1623,34 @@ gap: 10px;
         <div class="admin-list" id="offerAdminList"></div>
       </div>
 
+      <!-- Accessories tab -->
+      <div id="paneAccessories" style="display:none">
+        <input type="hidden" id="aId" />
+        <label for="aName">Name</label>
+        <input type="text" id="aName" placeholder="e.g. BMW Cover, 9D Tempered Glass" />
+        <div class="row2">
+          <div><label for="aCat">Type</label><select id="aCat"><option value="cover">Mobile Cover</option><option value="glass">Tempered Glass</option></select></div>
+          <div><label for="aPrice">Price ₹ (optional)</label><input type="number" id="aPrice" min="0" placeholder="199" /></div>
+        </div>
+        <label for="aImg">Photo</label>
+        <input type="file" id="aImg" accept="image/*" />
+        <div class="msg" id="aMsg"></div>
+        <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+          <button class="btn btn-primary" id="aSave" onclick="saveAcc()">➕ Add Item</button>
+          <button class="btn btn-outline" onclick="resetAccForm()">Clear</button>
+        </div>
+        <div class="admin-list" id="accAdminList"></div>
+      </div>
+
       <!-- Settings tab -->
       <div id="paneSettings" style="display:none">
         <label for="sPhone">Shop phone / WhatsApp number (with country code, digits only)</label>
-        <input type="tel" id="sPhone" placeholder="919876543210" />
+        <input type="tel" id="sPhone" placeholder="919994668101" />
         <label for="sRate">EMI interest rate (% per year, 0 for no-cost EMI)</label>
         <input type="number" id="sRate" min="0" max="60" step="0.5" />
+        <label for="sToken">GitHub token (fine-grained, Contents: Read and write)</label>
+        <input type="password" id="sToken" placeholder="github_pat_..." autocomplete="off" />
+        <div class="msg" id="ghStatus" style="color:var(--muted)"></div>
         <label for="sNewPass">Change admin password (leave blank to keep)</label>
         <input type="password" id="sNewPass" placeholder="New password" />
         <div class="msg" id="sMsg"></div>
@@ -1495,14 +1680,14 @@ gap: 10px;
     /* ========= ADMIN + DYNAMIC PRODUCTS =========
        Data is saved in THIS browser only (localStorage).
        Default admin password: nisha123  (change it in Shop Settings) */
-    const DEFAULT_PHONE = "919876543210";
+    const DEFAULT_PHONE = "919994668101";
     const DEFAULT_PRODUCTS = [
       { id: 1, name: "Premium Phone",    specs: "8GB RAM • 256GB Storage",  price: 39999, img: "" },
       { id: 2, name: "Pro Smartphone",   specs: "12GB RAM • 256GB Storage", price: 29999, img: "" },
       { id: 3, name: "Smartphone Plus",  specs: "8GB RAM • 128GB Storage",  price: 19999, img: "" },
       { id: 4, name: "Budget Smartphone",specs: "6GB RAM • 128GB Storage",  price: 12999, img: "" }
     ];
-    const K = { prod: "nisha_products", phone: "nisha_phone", pass: "nisha_pass", rate: "nisha_emi_rate", offers: "nisha_offers" };
+    const K = { prod: "nisha_products", phone: "nisha_phone", pass: "nisha_pass", rate: "nisha_emi_rate", offers: "nisha_offers", acc: "nisha_acc", token: "nisha_gh_token" };
     const DEFAULT_RATE = 12; // EMI interest, % per year (admin can change in Shop Settings)
     const $ = id => document.getElementById(id);
     const store = {
@@ -1516,11 +1701,11 @@ gap: 10px;
     let emiRate = store.get(K.rate, DEFAULT_RATE);
     let offers = store.get(K.offers, []);
     let activeBrand = ""; // "" = brand list, "__all" = every brand, otherwise one brand name
-    let pendingImg = null, loggedIn = false;
+    let pendingImg = null, pendingOfferImg = null, loggedIn = false;
 
     // Spec choices shown in the admin form (edit these lists to add more options)
     const SPEC_OPTIONS = {
-      pBrand:   { key: "brand",   label: "Brand",   list: ["Samsung","Redmi","Realme","Vivo","Oppo","OnePlus","Apple","Poco","Motorola","iQOO","Nokia","Infinix","Tecno","Other"] },
+      pBrand:   { key: "brand",   label: "Brand",   list: ["Samsung","Redmi","Realme","Vivo","Oppo","OnePlus","Apple","Poco","iQOO","Other"] },
       pRam:     { key: "ram",     label: "RAM",     list: ["2GB","3GB","4GB","6GB","8GB","12GB","16GB"] },
       pStorage: { key: "storage", label: "Storage", list: ["32GB","64GB","128GB","256GB","512GB","1TB"] },
       pNet:     { key: "net",     label: "Network", list: ["4G","5G"] },
@@ -1579,6 +1764,14 @@ gap: 10px;
         </div>`;
     }
 
+    // accent colour per brand (used for the brand tiles); "t" = letter colour
+    const BRAND_COLORS = {
+      Samsung: { c: "#1b4fd8" }, Redmi: { c: "#ff6a00" }, Realme: { c: "#ffc915", t: "#1a1500" }, Vivo: { c: "#4a68ff" },
+      Oppo: { c: "#14a36b" }, OnePlus: { c: "#f5222d" }, Apple: { c: "#b8bec4", t: "#111" }, Poco: { c: "#ffd400", t: "#1a1500" },
+      iQOO: { c: "#7a5cff" }, Other: { c: "#c9a36a", t: "#0f0c24" }
+    };
+    function brandStyle(b) { const x = BRAND_COLORS[b] || { c: "#6a4dff" }; return "--bc:" + x.c + ";--bt:" + (x.t || "#fff"); }
+
     function allBrands() {
       const listed = SPEC_OPTIONS.pBrand.list.filter(b => b !== "Other");
       const extra = [...new Set(products.map(brandOf))].filter(b => b !== "Other" && !listed.includes(b));
@@ -1599,7 +1792,7 @@ gap: 10px;
         tabs.className = "brand-grid";
         tabs.innerHTML = allBrands().map(b => {
           const c = cnt(b);
-          return `<button type="button" class="brand-tile${c ? "" : " empty"}" data-b="${esc(b)}"><span class="brand-logo">${esc(b.charAt(0))}</span><b>${esc(b === "Other" ? "More Mobiles" : b)}</b><small>${c} ${c === 1 ? "mobile" : "mobiles"}</small></button>`;
+          return `<button type="button" class="brand-tile${c ? "" : " empty"}" data-b="${esc(b)}" style="${brandStyle(b)}"><span class="brand-logo">${esc(b.charAt(0))}</span><b>${esc(b === "Other" ? "More Mobiles" : b)}</b><small>${c} ${c === 1 ? "mobile" : "mobiles"}</small></button>`;
         }).join("") + `<button type="button" class="brand-tile all" data-b="__all"><span class="brand-logo">★</span><b>All Mobiles</b><small>${products.length} total</small></button>`;
         grid.innerHTML = ""; return;
       }
@@ -1618,9 +1811,11 @@ gap: 10px;
 
     function applyPhone() {
       document.querySelectorAll('a[href*="wa.me/"], a[href^="tel:"]').forEach(a => {
+        if (a.hasAttribute("data-fixed")) return;
         a.href = a.href.replace(/wa\.me\/\d+/, "wa.me/" + phone).replace(/^tel:\+?\d+/, "tel:+" + phone);
       });
       document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+        if (a.hasAttribute("data-fixed")) return;
         if (a.textContent.includes("📞")) a.textContent = "📞 +" + phone.replace(/^(\d{2})(\d{5})(\d+)$/, "$1 $2 $3");
       });
     }
@@ -1644,8 +1839,7 @@ gap: 10px;
     }
 
     // Resize uploaded photo so it fits in localStorage
-    $("pImg").addEventListener("change", e => {
-      const f = e.target.files[0]; if (!f) { pendingImg = null; return; }
+    function resizePhoto(file, done) {
       const r = new FileReader();
       r.onload = () => {
         const im = new Image();
@@ -1654,11 +1848,19 @@ gap: 10px;
           const c = document.createElement("canvas");
           c.width = Math.round(im.width * sc); c.height = Math.round(im.height * sc);
           c.getContext("2d").drawImage(im, 0, 0, c.width, c.height);
-          pendingImg = c.toDataURL("image/jpeg", 0.75);
+          done(c.toDataURL("image/jpeg", 0.75));
         };
         im.src = r.result;
       };
-      r.readAsDataURL(f);
+      r.readAsDataURL(file);
+    }
+    $("pImg").addEventListener("change", e => {
+      const f = e.target.files[0]; if (!f) { pendingImg = null; return; }
+      resizePhoto(f, d => pendingImg = d);
+    });
+    $("oImg").addEventListener("change", e => {
+      const f = e.target.files[0]; if (!f) { pendingOfferImg = null; return; }
+      resizePhoto(f, d => pendingOfferImg = d);
     });
 
     function saveProduct() {
@@ -1691,20 +1893,22 @@ gap: 10px;
     }
 
     function showTab(t) {
-      ["products","offers","settings"].forEach(n => {
+      ["products","offers","accessories","settings"].forEach(n => {
         const N = n[0].toUpperCase() + n.slice(1);
         $("pane" + N).style.display = t === n ? "" : "none";
         $("tab" + N).classList.toggle("on", t === n);
       });
-      if (t === "settings") { $("sPhone").value = phone; $("sRate").value = emiRate; }
+      if (t === "settings") { $("sPhone").value = phone; $("sRate").value = emiRate; $("sToken").value = ""; $("sToken").placeholder = store.get(K.token, "") ? "Token saved on this device — leave blank to keep" : "github_pat_..."; $("ghStatus").textContent = ghOn() ? "GitHub sync is ON → " + GH.owner + "/" + GH.repo + " (" + GH.path + ")" : "GitHub sync is OFF — set GH.owner and GH.repo near the end of the script in nisha.html"; }
       if (t === "offers") renderOfferAdmin();
+      if (t === "accessories") renderAccAdmin();
     }
 
     function saveSettings() {
       const ph = $("sPhone").value.replace(/\D/g, "");
-      if (ph.length < 10) { msg("sMsg", "Enter a valid number with country code, e.g. 919876543210.", false); return; }
+      if (ph.length < 10) { msg("sMsg", "Enter a valid number with country code, e.g. 919994668101.", false); return; }
       const rt = parseFloat($("sRate").value);
       if (isNaN(rt) || rt < 0 || rt > 60) { msg("sMsg", "EMI interest rate must be between 0 and 60.", false); return; }
+      const tk = $("sToken").value.trim(); if (tk) { store.set(K.token, tk); $("sToken").value = ""; }
       emiRate = rt; store.set(K.rate, emiRate);
       phone = ph; store.set(K.phone, phone);
       const np = $("sNewPass").value;
@@ -1714,7 +1918,7 @@ gap: 10px;
 
     function resetAll() {
       if (!confirm("Reset all mobiles, phone number and password to defaults?")) return;
-      store.del(K.prod); store.del(K.phone); store.del(K.pass); store.del(K.rate); store.del(K.offers); emiRate = DEFAULT_RATE; offers = []; renderOffers();
+      store.del(K.prod); store.del(K.phone); store.del(K.pass); store.del(K.rate); store.del(K.offers); store.del(K.acc); emiRate = DEFAULT_RATE; offers = []; renderOffers(); accs = JSON.parse(JSON.stringify(DEFAULT_ACC)); renderAcc();
       products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS)); phone = DEFAULT_PHONE;
       renderProducts(); renderAdminList(); applyPhone(); $("sPhone").value = phone; $("sRate").value = emiRate; msg("sMsg", "Reset done.", true);
     }
@@ -1774,25 +1978,37 @@ gap: 10px;
         (o.till ? "\nValid till: " + fmtDate(o.till) : "") + "\nPlease share the details.";
     }
 
+    let offerIdx = 0, offerTimer = null;
     function renderOffers() {
-      const act = offers.filter(isActive);
-      $("offerList").innerHTML = act.map(o => `
-        <div class="offer-item">
-          <div><b>${esc(o.title)}</b>${o.detail ? `<span class="d">${esc(o.detail)}</span>` : ""}${o.till ? `<small>Valid till ${fmtDate(o.till)}</small>` : ""}</div>
-          <div class="offer-side">
-            ${o.tag ? `<span class="offer-tag">${esc(o.tag)}</span>` : ""}
-            <a class="offer-enq" href="${waLink(offerText(o))}" target="_blank" rel="noopener">💬 Enquire</a>
-          </div>
-        </div>`).join("");
-      $("offerSub").textContent = act.length ? "Fresh deals from our store, updated by the shop." : "Visit our store for today's latest deals, exchange offers and accessories.";
-      const lines = act.map(o => "• " + o.title + (o.tag ? " (" + o.tag + ")" : "")).join("\n");
-      $("offerCta").href = waLink("Hello Nisha Mobiles, please send me today's offers." + (lines ? "\nI saw these on your website:\n" + lines : ""));
+      const act = offers.filter(isActive), box = $("phoneOffer");
+      clearInterval(offerTimer);
+      if (!act.length) {
+        box.innerHTML = `<small>NEW ARRIVAL</small><h2>Latest<br>Smartphones</h2>
+          <a class="po-btn" href="${waLink("Hello Nisha Mobiles, please send me today's offers.")}" target="_blank" rel="noopener">💬 Get Today's Offers</a>`;
+        return;
+      }
+      if (offerIdx >= act.length) offerIdx = 0;
+      const o = act[offerIdx];
+      box.innerHTML = `
+        <span class="po-label">🔥 TODAY'S OFFER${act.length > 1 ? " · " + (offerIdx + 1) + "/" + act.length : ""}</span>
+        ${o.img ? `<img class="po-img" src="${o.img}" alt="${esc(o.title)}">` : ""}
+        ${o.tag ? `<span class="po-tag">${esc(o.tag)}</span>` : ""}
+        <h2>${esc(o.title)}</h2>
+        ${o.detail ? `<span class="po-detail">${esc(o.detail)}</span>` : ""}
+        ${o.till ? `<span class="po-till">Valid till ${fmtDate(o.till)}</span>` : ""}
+        <a class="po-btn" href="${waLink(offerText(o))}" target="_blank" rel="noopener">💬 Enquire Now</a>
+        ${act.length > 1 ? `<div class="po-dots">${act.map((_, i) => `<button type="button" data-i="${i}" class="${i === offerIdx ? "on" : ""}" aria-label="Offer ${i + 1}"></button>`).join("")}</div>` : ""}`;
+      if (act.length > 1) offerTimer = setInterval(() => { offerIdx = (offerIdx + 1) % act.length; renderOffers(); }, 4500);
     }
+    $("phoneOffer").addEventListener("click", e => {
+      const d = e.target.closest("[data-i]"); if (!d) return;
+      offerIdx = Number(d.dataset.i); renderOffers();
+    });
 
     function renderOfferAdmin() {
       $("offerAdminList").innerHTML = offers.map(o => `
         <div class="admin-item">
-          <div class="thumb">🔥</div>
+          <div class="thumb">${o.img ? `<img src="${o.img}" alt="">` : "🔥"}</div>
           <div class="meta"><b>${esc(o.title)}</b><span>${esc([o.tag, o.detail, o.till ? "till " + fmtDate(o.till) : ""].filter(Boolean).join(" • "))}${isActive(o) ? "" : " • EXPIRED (hidden)"}</span></div>
           <button style="background:#eeeaff;color:var(--primary)" onclick="editOffer(${o.id})">Edit</button>
           <button class="btn-danger" onclick="deleteOffer(${o.id})">Delete</button>
@@ -1800,7 +2016,7 @@ gap: 10px;
     }
 
     function resetOfferForm() {
-      ["oId","oTitle","oDetail","oTag","oTill"].forEach(i => $(i).value = "");
+      ["oId","oTitle","oDetail","oTag","oTill","oImg"].forEach(i => $(i).value = ""); pendingOfferImg = null;
       $("oSave").textContent = "➕ Add Offer"; msg("oMsg", "", true);
     }
 
@@ -1809,15 +2025,16 @@ gap: 10px;
       if (!title) { msg("oMsg", "Please enter the offer title.", false); return; }
       const data = { title, detail: $("oDetail").value.trim(), tag: $("oTag").value.trim(), till: $("oTill").value };
       const id = $("oId").value;
-      if (id) Object.assign(offers.find(x => x.id == id), data); else offers.unshift({ id: Date.now(), ...data });
-      if (!store.set(K.offers, offers)) { msg("oMsg", "Could not save in this browser.", false); return; }
+      if (id) { const o = offers.find(x => x.id == id); Object.assign(o, data); if (pendingOfferImg) o.img = pendingOfferImg; }
+      else offers.unshift({ id: Date.now(), ...data, img: pendingOfferImg || "" });
+      if (!store.set(K.offers, offers)) { msg("oMsg", "Storage full — use a smaller photo.", false); return; }
       renderOffers(); renderOfferAdmin(); resetOfferForm(); msg("oMsg", "Offer saved ✔", true);
     }
 
     function editOffer(id) {
       const o = offers.find(x => x.id == id); if (!o) return;
       $("oId").value = o.id; $("oTitle").value = o.title; $("oDetail").value = o.detail || ""; $("oTag").value = o.tag || ""; $("oTill").value = o.till || "";
-      $("oSave").textContent = "💾 Update Offer"; $("paneOffers").scrollIntoView({ behavior: "smooth", block: "start" });
+      pendingOfferImg = null; $("oImg").value = ""; $("oSave").textContent = "💾 Update Offer"; $("paneOffers").scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     function deleteOffer(id) {
@@ -1825,7 +2042,183 @@ gap: 10px;
       offers = offers.filter(x => x.id != id); store.set(K.offers, offers); renderOffers(); renderOfferAdmin(); resetOfferForm();
     }
 
-    renderProducts(); applyPhone(); renderOffers();
+    /* ========= KEYPAD MOBILES (edit this list to change brands) ========= */
+    const KEYPAD_BRANDS = [
+      { name: "Nokia",   tag: "Trusted & durable" },
+      { name: "Itel",    tag: "Budget friendly" },
+      { name: "Lava",    tag: "Value keypad phones" },
+      { name: "Samsung", tag: "Reliable Guru series" },
+      { name: "Jio",     tag: "Affordable 4G keypad" }
+    ];
+    function renderKeypad() {
+      $("keypadGrid").innerHTML = KEYPAD_BRANDS.map(b => `
+        <div class="keypad-card">
+          <div class="keypad-logo">${esc(b.name.charAt(0))}</div>
+          <h3>${esc(b.name)}</h3>
+          <p>${esc(b.tag)}</p>
+          <a class="small-btn" href="${waLink("Hello Nisha Mobiles, I want to know about " + b.name + " keypad mobiles. Please share the available models and prices.")}" target="_blank" rel="noopener">💬 Enquire Now</a>
+        </div>`).join("");
+    }
+
+    /* ========= COVERS + TEMPERED GLASS =========
+       Defaults below can be edited here, or managed (with photos) in Admin → Covers & Glass */
+    const DEFAULT_ACC = [
+      { id: 1,  cat: "cover", name: "Smoke Cover",         price: "", img: "" },
+      { id: 2,  cat: "cover", name: "Flip Cover",          price: "", img: "" },
+      { id: 3,  cat: "cover", name: "BMW Cover",           price: "", img: "" },
+      { id: 4,  cat: "cover", name: "Transparent Case",    price: "", img: "" },
+      { id: 5,  cat: "glass", name: "Clear HD Tempered Glass",        price: "", img: "" },
+      { id: 6,  cat: "glass", name: "9D / Full Glue Tempered Glass",  price: "", img: "" },
+      { id: 7,  cat: "glass", name: "Matte Tempered Glass",           price: "", img: "" },
+      { id: 8,  cat: "glass", name: "Privacy (Anti-Spy) Tempered Glass", price: "", img: "" },
+      { id: 9,  cat: "glass", name: "Camera Lens Protector",          price: "", img: "" }
+    ];
+    const ACC_CATS = { cover: { label: "Mobile Covers", icon: "📱" }, glass: { label: "Tempered Glass", icon: "🛡️" } };
+    let accs = store.get(K.acc, DEFAULT_ACC);
+    let pendingAccImg = null;
+
+    function accText(a) {
+      return "Hello Nisha Mobiles, I want to buy this:\n" + ACC_CATS[a.cat].icon + " " + a.name + " (" + ACC_CATS[a.cat].label + ")" +
+        (a.price !== "" && a.price != null ? "\nPrice: " + fmt(a.price) : "") + "\nMy phone model: \nPlease share availability.";
+    }
+
+    function renderAcc() {
+      $("accGrid").innerHTML = Object.keys(ACC_CATS).map(c => {
+        const list = accs.filter(a => a.cat === c);
+        if (!list.length) return "";
+        return `<div class="acc-group">
+          <div class="acc-head"><h3>${ACC_CATS[c].label}</h3><span>${list.length} ${list.length === 1 ? "item" : "items"}</span></div>
+          <div class="acc-grid">${list.map(a => `
+            <div class="acc-card">
+              <div class="acc-img">${a.img ? `<img src="${a.img}" alt="${esc(a.name)}">` : ACC_CATS[c].icon}</div>
+              <div class="acc-info">
+                <h4>${esc(a.name)}</h4>
+                ${a.price !== "" && a.price != null ? `<div class="acc-price">${fmt(a.price)}</div>` : ""}
+                <a class="small-btn" href="${waLink(accText(a))}" target="_blank" rel="noopener">💬 Enquire Now</a>
+              </div>
+            </div>`).join("")}
+          </div>
+        </div>`;
+      }).join("");
+    }
+
+    function renderAccAdmin() {
+      $("accAdminList").innerHTML = accs.map(a => `
+        <div class="admin-item">
+          <div class="thumb">${a.img ? `<img src="${a.img}" alt="">` : ACC_CATS[a.cat].icon}</div>
+          <div class="meta"><b>${esc(a.name)}</b><span>${ACC_CATS[a.cat].label}${a.price !== "" && a.price != null ? " • " + fmt(a.price) : ""}</span></div>
+          <button style="background:#eeeaff;color:var(--primary)" onclick="editAcc(${a.id})">Edit</button>
+          <button class="btn-danger" onclick="deleteAcc(${a.id})">Delete</button>
+        </div>`).join("") || "<p style='padding:14px 0;color:var(--muted)'>No items yet.</p>";
+    }
+
+    $("aImg").addEventListener("change", e => {
+      const f = e.target.files[0]; if (!f) { pendingAccImg = null; return; }
+      resizePhoto(f, d => pendingAccImg = d);
+    });
+
+    function resetAccForm() {
+      ["aId","aName","aPrice","aImg"].forEach(i => $(i).value = ""); $("aCat").value = "cover";
+      pendingAccImg = null; $("aSave").textContent = "➕ Add Item"; msg("aMsg", "", true);
+    }
+
+    function saveAcc() {
+      const name = $("aName").value.trim();
+      if (!name) { msg("aMsg", "Please enter the item name.", false); return; }
+      const data = { name, cat: $("aCat").value, price: $("aPrice").value === "" ? "" : Number($("aPrice").value) };
+      const id = $("aId").value;
+      if (id) { const a = accs.find(x => x.id == id); Object.assign(a, data); if (pendingAccImg) a.img = pendingAccImg; }
+      else accs.push({ id: Date.now(), ...data, img: pendingAccImg || "" });
+      if (!store.set(K.acc, accs)) { msg("aMsg", "Storage full — use a smaller photo.", false); return; }
+      renderAcc(); renderAccAdmin(); resetAccForm(); msg("aMsg", "Saved ✔", true);
+    }
+
+    function editAcc(id) {
+      const a = accs.find(x => x.id == id); if (!a) return;
+      $("aId").value = a.id; $("aName").value = a.name; $("aCat").value = a.cat; $("aPrice").value = a.price;
+      pendingAccImg = null; $("aImg").value = ""; $("aSave").textContent = "💾 Update Item";
+      $("paneAccessories").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function deleteAcc(id) {
+      if (!confirm("Delete this item?")) return;
+      accs = accs.filter(x => x.id != id); store.set(K.acc, accs); renderAcc(); renderAccAdmin(); resetAccForm();
+    }
+
+    /* ========= GITHUB STORAGE (fine-grained token) =========
+       Shop data (mobiles, offers, covers, phone, EMI rate) is saved to data.json in your GitHub repo,
+       so EVERY visitor sees what you add in Admin.
+       1) Fill in owner + repo below (these are public, not secret).
+       2) Paste your fine-grained token ONLY in Admin → Shop Settings. NEVER type it into this file. */
+    const GH = { owner: "nishamobiles2010", repo: "NishaMobiles", branch: "main", path: "data.json" };
+    function ghOn() { return !!GH.owner && !!GH.repo && !/^YOUR_/.test(GH.owner) && !/^YOUR_/.test(GH.repo); }
+    const GH_API = () => `https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`;
+    const GH_KEYS = [K.prod, K.offers, K.acc, K.phone, K.rate];
+    let applyingRemote = false, pushT = null, syncBusy = false, syncAgain = false;
+
+    // any save to a data key schedules a publish to GitHub
+    const _set = store.set.bind(store), _del = store.del.bind(store);
+    store.set = (k, v) => { const ok = _set(k, v); if (GH_KEYS.includes(k)) schedulePush(); return ok; };
+    store.del = k => { _del(k); if (GH_KEYS.includes(k)) schedulePush(); };
+    function schedulePush() { if (!ghOn() || applyingRemote) return; clearTimeout(pushT); pushT = setTimeout(() => pushData(), 500); }
+
+    function setSync(t, ok) { const m = $("syncMsg"); if (m) { m.textContent = t; m.className = "msg " + (ok ? "ok" : "err"); } }
+    function snapshot() { return { updated: new Date().toISOString(), phone, emiRate, products, offers, accs }; }
+    function toB64(str) {
+      const bytes = new TextEncoder().encode(str); let bin = "";
+      for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+      return btoa(bin);
+    }
+    function ghErr(m) {
+      if (/ 401/.test(m)) return "GitHub token is invalid or expired — paste a new one in Shop Settings.";
+      if (/ 40[34]/.test(m)) return "GitHub refused access — check the owner/repo names and that the token has Contents: Read and write on this repo.";
+      if (/ (409|422)/.test(m)) return "GitHub save conflict — please try the change again.";
+      if (/Failed to fetch|NetworkError/i.test(m)) return "No internet connection — saved on this device only.";
+      return "GitHub error: " + m;
+    }
+
+    async function pushData() {
+      const token = store.get(K.token, "");
+      if (!token) { setSync("Saved on this device only — add your GitHub token in Shop Settings to publish for everyone.", false); return; }
+      if (syncBusy) { syncAgain = true; return; }
+      syncBusy = true; setSync("Publishing to GitHub…", true);
+      try {
+        const h = { Authorization: "Bearer " + token, "X-GitHub-Api-Version": "2022-11-28" };
+        let sha;
+        const g = await fetch(GH_API() + "?ref=" + encodeURIComponent(GH.branch), { headers: { ...h, Accept: "application/vnd.github.object+json" }, cache: "no-store" });
+        if (g.ok) sha = (await g.json()).sha; else if (g.status !== 404) throw new Error("GET " + g.status);
+        const body = { message: "Update shop data", content: toB64(JSON.stringify(snapshot())), branch: GH.branch };
+        if (sha) body.sha = sha;
+        const r = await fetch(GH_API(), { method: "PUT", headers: { ...h, Accept: "application/vnd.github+json", "Content-Type": "application/json" }, body: JSON.stringify(body) });
+        if (!r.ok) throw new Error("PUT " + r.status);
+        setSync("Published to GitHub ✔ — visitors see it in about a minute.", true);
+      } catch (e) { setSync(ghErr(String(e.message || e)), false); }
+      finally { syncBusy = false; if (syncAgain) { syncAgain = false; pushData(); } }
+    }
+
+    // every visitor loads the latest data.json from GitHub
+    async function loadRemote() {
+      if (!ghOn()) return;
+      try {
+        const token = store.get(K.token, ""), h = { Accept: "application/vnd.github.raw+json" };
+        if (token) h.Authorization = "Bearer " + token;
+        const r = await fetch(GH_API() + "?ref=" + encodeURIComponent(GH.branch), { headers: h, cache: "no-store" });
+        if (!r.ok) return;
+        const d = await r.json();
+        applyingRemote = true;
+        if (Array.isArray(d.products)) { products = d.products; store.set(K.prod, products); }
+        if (Array.isArray(d.offers)) { offers = d.offers; store.set(K.offers, offers); }
+        if (Array.isArray(d.accs)) { accs = d.accs; store.set(K.acc, accs); }
+        if (typeof d.phone === "string" && d.phone) { phone = d.phone; store.set(K.phone, phone); }
+        if (typeof d.emiRate === "number") { emiRate = d.emiRate; store.set(K.rate, emiRate); }
+        applyingRemote = false;
+        renderProducts(); renderAcc(); renderOffers(); applyPhone();
+        if (loggedIn) { renderAdminList(); renderAccAdmin(); renderOfferAdmin(); }
+      } catch (e) { applyingRemote = false; }
+    }
+
+    renderProducts(); renderKeypad(); renderAcc(); applyPhone(); renderOffers();
+    loadRemote();
   </script>
 
 </body>
