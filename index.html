@@ -1138,6 +1138,18 @@ gap: 10px;
     @media (max-width: 900px) { .hero { padding-top: 28px; } .hero-grid { grid-template-areas: "banner" "content" "phone"; row-gap: 32px; } .hero-banner .banner-frame { border-radius: 16px; } }
   
     .acc-note { font-size: 13px; color: var(--muted); line-height: 1.55; margin: 2px 0 14px; }
+  
+    /* ===== TODAY'S OFFER: SWIPE + TAP TO VIEW ===== */
+    .po-track { display: flex; width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; align-items: flex-end; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+    .po-track::-webkit-scrollbar { display: none; }
+    .po-slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; display: flex; flex-direction: column; align-items: flex-start; }
+    .po-tap { width: 100%; display: flex; flex-direction: column; align-items: flex-start; cursor: pointer; }
+    .po-hint { font-size: 12px; color: #f1dcb4; margin-top: 8px; opacity: .9; }
+    #offerView { padding-top: 18px; }
+    .ov-img { width: 100%; max-height: 62vh; object-fit: contain; border-radius: 16px; background: var(--porcelain); margin-bottom: 14px; }
+    .ov-title { font: 700 22px Sora, Manrope, sans-serif; color: var(--ink); margin: 10px 0 6px; }
+    .ov-detail { color: var(--text); font-size: 15px; margin-bottom: 6px; }
+    .ov-till { color: var(--muted); font-size: 13px; }
   </style>
 </head>
 
@@ -1559,6 +1571,14 @@ gap: 10px;
     </div>
   </div>
 
+  <!-- TODAY'S OFFER VIEWER -->
+  <div class="modal-bg" id="offerBg">
+    <div class="modal small" style="margin-top:4vh;width:min(520px,100%)">
+      <div class="modal-head"><h3>🔥 Today's Offer</h3><button class="x-btn" onclick="closeModals()" aria-label="Close">✕</button></div>
+      <div id="offerView"></div>
+    </div>
+  </div>
+
   <!-- ADMIN LOGIN MODAL -->
   <div class="modal-bg" id="loginBg">
     <div class="modal small">
@@ -1956,12 +1976,12 @@ gap: 10px;
       } else { $("loginMsg").textContent = "Wrong password."; }
     }
     function logout() { loggedIn = false; closeModals(); }
-    function hideModals() { ["loginBg","adminBg","emiBg"].forEach(id => $(id).classList.remove("open")); }
+    function hideModals() { ["loginBg","adminBg","emiBg","offerBg"].forEach(id => $(id).classList.remove("open")); }
     function closeModals() { if (history.state && history.state.v === "modal") history.back(); else hideModals(); }
     function openModal(id) { $(id).classList.add("open"); if (!(history.state && history.state.v === "modal")) history.pushState({ v: "modal" }, ""); }
     $("adminPass").addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeModals(); });
-    ["loginBg","adminBg","emiBg"].forEach(id => $(id).addEventListener("mousedown", e => { if (e.target.id === id) closeModals(); }));
+    ["loginBg","adminBg","emiBg","offerBg"].forEach(id => $(id).addEventListener("mousedown", e => { if (e.target.id === id) closeModals(); }));
 
 
     /* ========= EMI CALCULATOR ========= */
@@ -2002,32 +2022,57 @@ gap: 10px;
         (o.till ? "\nValid till: " + fmtDate(o.till) : "") + "\nPlease share the details.";
     }
 
-    let offerIdx = 0, offerTimer = null;
+    let offerIdx = 0;
     function renderOffers() {
       const act = offers.filter(isActive), box = $("phoneOffer");
-      clearInterval(offerTimer);
       if (!act.length) {
         box.innerHTML = `<small>NEW ARRIVAL</small><h2>Latest<br>Smartphones</h2>
           <a class="po-btn" href="${waLink("Hello Nisha Mobiles, please send me today's offers.")}" target="_blank" rel="noopener">💬 Get Today's Offers</a>`;
         return;
       }
       if (offerIdx >= act.length) offerIdx = 0;
-      const o = act[offerIdx];
-      box.innerHTML = `
-        <span class="po-label">🔥 TODAY'S OFFER${act.length > 1 ? " · " + (offerIdx + 1) + "/" + act.length : ""}</span>
-        ${o.img ? `<img class="po-img" src="${o.img}" alt="${esc(o.title)}">` : ""}
-        ${o.tag ? `<span class="po-tag">${esc(o.tag)}</span>` : ""}
-        <h2>${esc(o.title)}</h2>
-        ${o.detail ? `<span class="po-detail">${esc(o.detail)}</span>` : ""}
-        ${o.till ? `<span class="po-till">Valid till ${fmtDate(o.till)}</span>` : ""}
-        <a class="po-btn" href="${waLink(offerText(o))}" target="_blank" rel="noopener">💬 Enquire Now</a>
+      box.innerHTML = `<div class="po-track" id="poTrack">${act.map((o, i) => `
+        <div class="po-slide">
+          <span class="po-label">🔥 TODAY'S OFFER${act.length > 1 ? " · " + (i + 1) + "/" + act.length : ""}</span>
+          <div class="po-tap" data-id="${o.id}" role="button" tabindex="0" aria-label="View offer: ${esc(o.title)}">
+            ${o.img ? `<img class="po-img" src="${o.img}" alt="${esc(o.title)}">` : ""}
+            ${o.tag ? `<span class="po-tag">${esc(o.tag)}</span>` : ""}
+            <h2>${esc(o.title)}</h2>
+            ${o.detail ? `<span class="po-detail">${esc(o.detail)}</span>` : ""}
+            ${o.till ? `<span class="po-till">Valid till ${fmtDate(o.till)}</span>` : ""}
+            <span class="po-hint">👆 Tap to view${act.length > 1 ? " · swipe for more ➜" : ""}</span>
+          </div>
+          <a class="po-btn" href="${waLink(offerText(o))}" target="_blank" rel="noopener">💬 Enquire Now</a>
+        </div>`).join("")}</div>
         ${act.length > 1 ? `<div class="po-dots">${act.map((_, i) => `<button type="button" data-i="${i}" class="${i === offerIdx ? "on" : ""}" aria-label="Offer ${i + 1}"></button>`).join("")}</div>` : ""}`;
-      if (act.length > 1) offerTimer = setInterval(() => { offerIdx = (offerIdx + 1) % act.length; renderOffers(); }, 4500);
+      const tr = $("poTrack");
+      tr.style.scrollBehavior = "auto"; tr.scrollLeft = offerIdx * tr.clientWidth; tr.style.scrollBehavior = "";
+      if (act.length > 1) tr.addEventListener("scroll", () => {
+        const i = Math.round(tr.scrollLeft / (tr.clientWidth || 1));
+        if (i === offerIdx) return;
+        offerIdx = i;
+        box.querySelectorAll(".po-dots button").forEach((d, k) => d.classList.toggle("on", k === i));
+      }, { passive: true });
     }
     $("phoneOffer").addEventListener("click", e => {
-      const d = e.target.closest("[data-i]"); if (!d) return;
-      offerIdx = Number(d.dataset.i); renderOffers();
+      const d = e.target.closest("[data-i]");
+      if (d) { const tr = $("poTrack"); tr.scrollTo({ left: Number(d.dataset.i) * tr.clientWidth, behavior: "smooth" }); return; }
+      const t = e.target.closest(".po-tap"); if (t) openOfferView(t.dataset.id);
     });
+    $("phoneOffer").addEventListener("keydown", e => {
+      if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("po-tap")) { e.preventDefault(); openOfferView(e.target.dataset.id); }
+    });
+    function openOfferView(id) {
+      const o = offers.find(x => x.id == id); if (!o) return;
+      $("offerView").innerHTML = `
+        ${o.img ? `<img class="ov-img" src="${o.img}" alt="${esc(o.title)}">` : ""}
+        ${o.tag ? `<span class="offer-tag">${esc(o.tag)}</span>` : ""}
+        <h3 class="ov-title">${esc(o.title)}</h3>
+        ${o.detail ? `<p class="ov-detail">${esc(o.detail)}</p>` : ""}
+        ${o.till ? `<p class="ov-till">Valid till ${fmtDate(o.till)}</p>` : ""}
+        <a class="btn btn-primary" style="width:100%;margin-top:14px" href="${waLink(offerText(o))}" target="_blank" rel="noopener">💬 Enquire Now</a>`;
+      openModal("offerBg");
+    }
 
     function renderOfferAdmin() {
       $("offerAdminList").innerHTML = offers.map(o => `
@@ -2258,7 +2303,7 @@ gap: 10px;
     /* ===== PHONE BACK BUTTON: closes popups / leaves brand view instead of leaving the site ===== */
     if (history.state) history.replaceState(null, "");
     window.addEventListener("popstate", () => {
-      if (["loginBg","adminBg","emiBg"].some(id => $(id).classList.contains("open"))) { hideModals(); return; }
+      if (["loginBg","adminBg","emiBg","offerBg"].some(id => $(id).classList.contains("open"))) { hideModals(); return; }
       if (activeBrand !== "" && !(history.state && history.state.v === "brand")) {
         activeBrand = ""; renderProducts();
         $("mobiles").scrollIntoView({ behavior: "smooth", block: "start" });
