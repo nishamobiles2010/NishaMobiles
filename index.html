@@ -1150,6 +1150,13 @@ gap: 10px;
     .ov-title { font: 700 22px Sora, Manrope, sans-serif; color: var(--ink); margin: 10px 0 6px; }
     .ov-detail { color: var(--text); font-size: 15px; margin-bottom: 6px; }
     .ov-till { color: var(--muted); font-size: 13px; }
+  
+    /* ===== FIX: PHOTO MUST STAY INSIDE THE CARD ===== */
+    .product-img { position: relative; overflow: hidden; }
+    .product-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #fff; }
+    .products-section .pill { background: rgba(15,12,36,.85); border: 1px solid rgba(255,255,255,.2); }
+    .acc-img { position: relative; }
+    .acc-img img { position: absolute; inset: 0; }
   </style>
 </head>
 
