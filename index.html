@@ -1572,6 +1572,50 @@ html, body {
   }
 }
 
+
+/* ===== HERO IMAGE TAP + MOBILE NAVIGATION ===== */
+.hero-slide img {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.hero-slide img:active {
+  transform: scale(.985);
+}
+.hero-tap-hint {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.48);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  pointer-events: none;
+}
+@media (max-width: 650px) {
+  .hero-slider {
+    touch-action: pan-y;
+  }
+  .hero-slider-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+  .hero-slider-arrow.prev { left: 8px; }
+  .hero-slider-arrow.next { right: 8px; }
+  .hero-slider-dots {
+    bottom: 9px;
+  }
+  .hero-slider-dots button {
+    width: 9px;
+    height: 9px;
+  }
+}
+
 </style>
 </head>
 
@@ -2573,8 +2617,8 @@ html, body {
       if (sliderIdx >= slides.length) sliderIdx = 0;
       box.innerHTML = `<div class="hero-slider-track" id="heroSliderTrack">${slides.map(s => `
         <div class="hero-slide ${s.img ? "" : "no-image"}">
-          ${s.img ? `<img src="${s.img}" alt="${esc(s.title || "Nisha Mobiles")}">` : ""}
-          <div class="hero-slide-copy"><h2>${esc(s.title || "Nisha Mobiles")}</h2>${s.text ? `<p>${esc(s.text)}</p>` : ""}</div>
+          ${s.img ? `<img src="${s.img}" alt="${esc(s.title || "Nisha Mobiles")}" onclick="heroNext()" role="button" tabindex="0" title="Tap to view next image">` : ""}
+          <div class="hero-slide-copy"><h2>${esc(s.title || "Nisha Mobiles")}</h2>${s.text ? `<p>${esc(s.text)}</p>` : ""}</div>${s.img ? `<div class="hero-tap-hint">👆 Tap image to change</div>` : ""}
         </div>`).join("")}</div>
         ${slides.length > 1 ? `<button class="hero-slider-arrow prev" type="button" onclick="heroPrev()" aria-label="Previous slide">‹</button><button class="hero-slider-arrow next" type="button" onclick="heroNext()" aria-label="Next slide">›</button><div class="hero-slider-dots">${slides.map((_,i)=>`<button type="button" class="${i===sliderIdx?"on":""}" onclick="heroGo(${i})" aria-label="Slide ${i+1}"></button>`).join("")}</div>` : ""}`;
       updateHeroSlider();
@@ -2833,7 +2877,53 @@ html, body {
 
     renderProducts(); renderKeypad(); renderAcc(); applyPhone(); renderOffers(); renderHeroSlider();
     loadRemote();
-  </script>
+  
+/* ===== HERO TAP / SWIPE NAVIGATION ===== */
+(function setupHeroTouchNavigation(){
+  let startX = 0;
+  let startY = 0;
+  let moved = false;
+
+  document.addEventListener("touchstart", function(e){
+    const slider = e.target.closest("#heroSlider");
+    if (!slider) return;
+    const t = e.touches[0];
+    startX = t.clientX;
+    startY = t.clientY;
+    moved = false;
+  }, {passive:true});
+
+  document.addEventListener("touchmove", function(e){
+    const slider = e.target.closest("#heroSlider");
+    if (!slider) return;
+    const t = e.touches[0];
+    if (Math.abs(t.clientX - startX) > 10 || Math.abs(t.clientY - startY) > 10) moved = true;
+  }, {passive:true});
+
+  document.addEventListener("touchend", function(e){
+    const slider = e.target.closest("#heroSlider");
+    if (!slider) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+
+    if (Math.abs(dx) >= 45 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) heroNext();
+      else heroPrev();
+    }
+  }, {passive:true});
+
+  document.addEventListener("keydown", function(e){
+    const img = e.target.closest("#heroSlider .hero-slide img");
+    if (!img) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      heroNext();
+    }
+  });
+})();
+
+</script>
 
 </body>
 </html>
