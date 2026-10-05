@@ -1573,131 +1573,91 @@ html, body {
 }
 
 
-/* ===== HERO IMAGE TAP + MOBILE NAVIGATION ===== */
-.hero-slide img {
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-drag: none;
+/* ===== MOBILE HERO IMAGE TAP-TO-VIEW ===== */
+.hero-click-image {
+  cursor: zoom-in !important;
+  pointer-events: auto !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.hero-slide img:active {
-  transform: scale(.985);
-}
-.hero-tap-hint {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 4;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(0,0,0,.48);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  pointer-events: none;
-}
-@media (max-width: 650px) {
-  .hero-slider {
-    touch-action: pan-y;
-  }
-  .hero-slider-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 22px;
-  }
-  .hero-slider-arrow.prev { left: 8px; }
-  .hero-slider-arrow.next { right: 8px; }
-  .hero-slider-dots {
-    bottom: 9px;
-  }
-  .hero-slider-dots button {
-    width: 9px;
-    height: 9px;
-  }
-}
+.hero-click-image:active { opacity: .88; }
 
-
-/* ===== HERO FULL IMAGE VIEWER ===== */
 .hero-image-viewer {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483647 !important;
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  background: rgba(5, 3, 18, .94);
+  background: rgba(8,6,20,.96);
+  padding: 12px;
   box-sizing: border-box;
 }
-.hero-image-viewer.open {
-  display: flex;
-}
-.hero-viewer-stage {
-  width: min(1100px, 94vw);
-  height: min(82vh, 760px);
+.hero-image-viewer.open { display: flex !important; }
+
+.hero-viewer-box {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
+  pointer-events: none;
 }
-.hero-viewer-stage img {
-  max-width: 100%;
-  max-height: calc(100% - 34px);
+.hero-viewer-box img {
+  max-width: 92vw;
+  max-height: 82vh;
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 14px;
-  box-shadow: 0 20px 70px rgba(0,0,0,.5);
-  background: #111;
+  border-radius: 12px;
+  pointer-events: auto;
+  box-shadow: 0 20px 70px rgba(0,0,0,.65);
 }
 .hero-viewer-title {
   color: #fff;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   text-align: center;
 }
-.hero-viewer-close {
-  position: fixed;
-  top: 18px;
-  right: 20px;
-  width: 46px;
-  height: 46px;
-  border: 0;
-  border-radius: 50%;
-  background: rgba(255,255,255,.14);
-  color: #fff;
-  font-size: 34px;
-  line-height: 1;
-  cursor: pointer;
-  z-index: 2;
-}
+.hero-viewer-close,
 .hero-viewer-arrow {
   position: fixed;
+  z-index: 2147483648;
+  border: 0;
+  color: #fff;
+  background: rgba(255,255,255,.16);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.hero-viewer-close {
+  top: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 30px;
+}
+.hero-viewer-arrow {
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  border: 0;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(255,255,255,.16);
-  color: #fff;
-  font-size: 32px;
-  line-height: 1;
-  cursor: pointer;
-  z-index: 2;
+  font-size: 30px;
 }
-.hero-viewer-arrow.prev { left: 20px; }
-.hero-viewer-arrow.next { right: 20px; }
+.hero-viewer-arrow.prev { left: 10px; }
+.hero-viewer-arrow.next { right: 10px; }
 .hero-viewer-dots {
   position: fixed;
-  bottom: 18px;
   left: 0;
   right: 0;
+  bottom: 14px;
+  z-index: 2147483648;
   display: flex;
   justify-content: center;
   gap: 8px;
-  z-index: 2;
 }
 .hero-viewer-dots button {
   width: 9px;
@@ -1706,40 +1666,62 @@ html, body {
   border: 0;
   border-radius: 50%;
   background: rgba(255,255,255,.45);
-  cursor: pointer;
 }
 .hero-viewer-dots button.on {
   background: #fff;
   transform: scale(1.3);
 }
 @media (max-width: 650px) {
-  .hero-image-viewer {
-    padding: 14px;
+  .hero-slider .hero-slide img {
+    pointer-events: auto !important;
   }
-  .hero-viewer-stage {
-    width: 94vw;
-    height: 80vh;
+  .hero-viewer-box img {
+    max-width: 88vw;
+    max-height: 78vh;
   }
-  .hero-viewer-stage img {
-    max-width: 100%;
-    max-height: calc(100% - 28px);
-    border-radius: 10px;
+}
+
+
+/* ===== FINAL MOBILE HERO CLICK FIX ===== */
+@media (max-width: 650px) {
+  .hero-slider,
+  .hero-slider-track,
+  .hero-slide {
+    touch-action: manipulation !important;
   }
-  .hero-viewer-close {
-    top: 10px;
-    right: 10px;
-    width: 42px;
-    height: 42px;
+
+  .hero-slide {
+    cursor: pointer !important;
   }
-  .hero-viewer-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 27px;
+
+  .hero-slide-copy {
+    pointer-events: none !important;
   }
-  .hero-viewer-arrow.prev { left: 8px; }
-  .hero-viewer-arrow.next { right: 8px; }
-  .hero-viewer-dots {
-    bottom: 10px;
+
+  .hero-slide img {
+    pointer-events: none !important;
+  }
+
+  .hero-slider-arrow,
+  .hero-slider-dots,
+  .hero-slider-dots button {
+    pointer-events: auto !important;
+  }
+
+  .hero-slider::after {
+    content: "👆 Tap to view";
+    position: absolute;
+    left: 50%;
+    bottom: 38px;
+    transform: translateX(-50%);
+    z-index: 4;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: rgba(0,0,0,.45);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    pointer-events: none;
   }
 }
 
@@ -2743,11 +2725,11 @@ html, body {
       if (!slides.length) { box.innerHTML = '<div class="slider-empty"><b>No slider images yet</b><span>Admin can add a hero slide.</span></div>'; return; }
       if (sliderIdx >= slides.length) sliderIdx = 0;
       box.innerHTML = `<div class="hero-slider-track" id="heroSliderTrack">${slides.map(s => `
-        <div class="hero-slide ${s.img ? "" : "no-image"}">
-          ${s.img ? `<img src="${s.img}" alt="${esc(s.title || "Nisha Mobiles")}" onclick="openHeroImage(sliderIdx)" role="button" tabindex="0" title="Tap to view image">` : ""}
-          <div class="hero-slide-copy"><h2>${esc(s.title || "Nisha Mobiles")}</h2>${s.text ? `<p>${esc(s.text)}</p>` : ""}</div>${s.img ? `<div class="hero-tap-hint">👆 Tap image to view</div>` : ""}
+        <div class="hero-slide ${s.img ? "" : "no-image"}" onclick="openHeroViewer(sliderIdx)" role="button" tabindex="0" style="cursor:pointer;">
+          ${s.img ? `<img class="hero-click-image" src="${s.img}" alt="${esc(s.title || "Nisha Mobiles")}" onclick="openHeroViewer(sliderIdx)" tabindex="0" role="button" title="Tap to view image">` : ""}
+          <div class="hero-slide-copy"><h2>${esc(s.title || "Nisha Mobiles")}</h2>${s.text ? `<p>${esc(s.text)}</p>` : ""}</div>
         </div>`).join("")}</div>
-        ${slides.length > 1 ? `<button class="hero-slider-arrow prev" type="button" onclick="heroPrev()" aria-label="Previous slide">‹</button><button class="hero-slider-arrow next" type="button" onclick="heroNext()" aria-label="Next slide">›</button><div class="hero-slider-dots">${slides.map((_,i)=>`<button type="button" class="${i===sliderIdx?"on":""}" onclick="heroGo(${i})" aria-label="Slide ${i+1}"></button>`).join("")}</div>` : ""}`;
+        ${slides.length > 1 ? `<button class="hero-slider-arrow prev" type="button" onclick="event.stopPropagation(); heroPrev()" aria-label="Previous slide">‹</button><button class="hero-slider-arrow next" type="button" onclick="event.stopPropagation(); heroNext()" aria-label="Next slide">›</button><div class="hero-slider-dots">${slides.map((_,i)=>`<button type="button" class="${i===sliderIdx?"on":""}" onclick="event.stopPropagation(); heroGo(${i})" aria-label="Slide ${i+1}"></button>`).join("")}</div>` : ""}`;
       updateHeroSlider();
       clearInterval(sliderTimer);
       if (slides.length > 1) sliderTimer = setInterval(heroNext, 4500);
@@ -3005,125 +2987,123 @@ html, body {
     renderProducts(); renderKeypad(); renderAcc(); applyPhone(); renderOffers(); renderHeroSlider();
     loadRemote();
   
-/* ===== HERO TAP / SWIPE NAVIGATION ===== */
-(function setupHeroTouchNavigation(){
-  let startX = 0;
-  let startY = 0;
-  let moved = false;
-
-  document.addEventListener("touchstart", function(e){
-    const slider = e.target.closest("#heroSlider");
-    if (!slider) return;
-    const t = e.touches[0];
-    startX = t.clientX;
-    startY = t.clientY;
-    moved = false;
-  }, {passive:true});
-
-  document.addEventListener("touchmove", function(e){
-    const slider = e.target.closest("#heroSlider");
-    if (!slider) return;
-    const t = e.touches[0];
-    if (Math.abs(t.clientX - startX) > 10 || Math.abs(t.clientY - startY) > 10) moved = true;
-  }, {passive:true});
-
-  document.addEventListener("touchend", function(e){
-    const slider = e.target.closest("#heroSlider");
-    if (!slider) return;
-    const t = e.changedTouches[0];
-    const dx = t.clientX - startX;
-    const dy = t.clientY - startY;
-
-    if (Math.abs(dx) >= 45 && Math.abs(dx) > Math.abs(dy)) {
-      if (dx < 0) heroNext();
-      else heroPrev();
-    }
-  }, {passive:true});
-
-  document.addEventListener("keydown", function(e){
-    const img = e.target.closest("#heroSlider .hero-slide img");
-    if (!img) return;
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      heroNext();
-    }
-  });
-})();
-
-
-/* ===== HERO IMAGE VIEWER ===== */
-function openHeroImage(index) {
-  if (!slides.length || !slides[index] || !slides[index].img) return;
+/* ===== HERO IMAGE VIEWER SCRIPT ===== */
+function openHeroViewer(index) {
+  if (!slides || !slides.length) return;
+  if (!slides[index] || !slides[index].img) return;
   sliderIdx = (index + slides.length) % slides.length;
-  updateHeroImageViewer();
-  const v = $("heroImageViewer");
-  if (!v) return;
-  v.classList.add("open");
-  v.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-}
-function updateHeroImageViewer() {
-  const v = $("heroImageViewer");
-  const img = $("heroViewerImage");
-  const title = $("heroViewerTitle");
-  const dots = $("heroViewerDots");
-  if (!v || !img || !slides.length) return;
-  const s = slides[sliderIdx];
-  img.src = s.img || "";
-  img.alt = s.title || "Nisha Mobiles";
-  title.textContent = s.title || "";
+
+  const viewer = document.getElementById("heroImageViewer");
+  const image = document.getElementById("heroViewerImage");
+  const title = document.getElementById("heroViewerTitle");
+  const dots = document.getElementById("heroViewerDots");
+  if (!viewer || !image) return;
+
+  image.src = slides[sliderIdx].img;
+  image.alt = slides[sliderIdx].title || "Nisha Mobiles";
+  if (title) title.textContent = slides[sliderIdx].title || "";
+
   if (dots) {
-    dots.innerHTML = slides.map((_, i) =>
+    dots.innerHTML = slides.map((s, i) =>
       `<button type="button" class="${i === sliderIdx ? "on" : ""}" onclick="heroViewerGo(${i})" aria-label="View image ${i + 1}"></button>`
     ).join("");
   }
+
+  viewer.classList.add("open");
+  viewer.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
 }
-function closeHeroImage() {
-  const v = $("heroImageViewer");
-  if (!v) return;
-  v.classList.remove("open");
-  v.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+
+function heroViewerGo(index) {
+  if (!slides || !slides.length) return;
+  sliderIdx = (index + slides.length) % slides.length;
+  openHeroViewer(sliderIdx);
 }
-function heroViewerGo(i) {
-  if (!slides.length) return;
-  sliderIdx = (i + slides.length) % slides.length;
-  updateHeroImageViewer();
-}
+
 function heroViewerNext() {
   heroViewerGo(sliderIdx + 1);
 }
+
 function heroViewerPrev() {
   heroViewerGo(sliderIdx - 1);
 }
 
+function closeHeroViewer() {
+  const viewer = document.getElementById("heroImageViewer");
+  if (!viewer) return;
+  viewer.classList.remove("open");
+  viewer.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+/* Mobile tap + swipe support */
 document.addEventListener("keydown", function(e) {
-  const v = $("heroImageViewer");
-  if (!v || !v.classList.contains("open")) return;
-  if (e.key === "Escape") closeHeroImage();
-  if (e.key === "ArrowRight") heroViewerNext();
-  if (e.key === "ArrowLeft") heroViewerPrev();
+  const viewer = document.getElementById("heroImageViewer");
+  if (e.target.classList && e.target.classList.contains("hero-click-image")) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openHeroViewer(sliderIdx);
+    }
+  }
+  if (viewer && viewer.classList.contains("open")) {
+    if (e.key === "Escape") closeHeroViewer();
+    if (e.key === "ArrowLeft") heroViewerPrev();
+    if (e.key === "ArrowRight") heroViewerNext();
+  }
 });
 
+let heroTouchStartX = 0;
+let heroTouchStartY = 0;
+
+document.addEventListener("touchstart", function(e) {
+  if (!e.target.closest("#heroSlider")) return;
+  const t = e.touches[0];
+  heroTouchStartX = t.clientX;
+  heroTouchStartY = t.clientY;
+}, {passive:true});
+
+document.addEventListener("touchend", function(e) {
+  const viewer = document.getElementById("heroImageViewer");
+  if (!viewer || !viewer.classList.contains("open")) return;
+
+  const t = e.changedTouches[0];
+  const dx = t.clientX - heroTouchStartX;
+  const dy = t.clientY - heroTouchStartY;
+  if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+    if (dx < 0) heroViewerNext();
+    else heroViewerPrev();
+  }
+}, {passive:true});
+
 document.addEventListener("click", function(e) {
-  const v = $("heroImageViewer");
-  if (!v || !v.classList.contains("open")) return;
-  if (e.target === v) closeHeroImage();
+  const viewer = document.getElementById("heroImageViewer");
+  if (viewer && viewer.classList.contains("open") && e.target === viewer) {
+    closeHeroViewer();
+  }
+});
+
+
+document.addEventListener("keydown", function(e) {
+  const slide = e.target.closest && e.target.closest("#heroSlider .hero-slide");
+  if (!slide) return;
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    openHeroViewer(sliderIdx);
+  }
 });
 
 </script>
 
 
-<!-- HERO IMAGE VIEWER -->
-<div class="hero-image-viewer" id="heroImageViewer" aria-hidden="true">
-  <button class="hero-viewer-close" type="button" onclick="closeHeroImage()" aria-label="Close image">×</button>
-  <button class="hero-viewer-arrow prev" type="button" onclick="heroViewerPrev()" aria-label="Previous image">‹</button>
-  <div class="hero-viewer-stage">
+<div id="heroImageViewer" class="hero-image-viewer" aria-hidden="true">
+  <button type="button" class="hero-viewer-close" onclick="closeHeroViewer()" aria-label="Close">×</button>
+  <button type="button" class="hero-viewer-arrow prev" onclick="heroViewerPrev()" aria-label="Previous image">‹</button>
+  <div class="hero-viewer-box">
     <img id="heroViewerImage" src="" alt="">
-    <div class="hero-viewer-title" id="heroViewerTitle"></div>
+    <div id="heroViewerTitle" class="hero-viewer-title"></div>
   </div>
-  <button class="hero-viewer-arrow next" type="button" onclick="heroViewerNext()" aria-label="Next image">›</button>
-  <div class="hero-viewer-dots" id="heroViewerDots"></div>
+  <button type="button" class="hero-viewer-arrow next" onclick="heroViewerNext()" aria-label="Next image">›</button>
+  <div id="heroViewerDots" class="hero-viewer-dots"></div>
 </div>
 
 </body>
