@@ -1616,6 +1616,133 @@ html, body {
   }
 }
 
+
+/* ===== HERO FULL IMAGE VIEWER ===== */
+.hero-image-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(5, 3, 18, .94);
+  box-sizing: border-box;
+}
+.hero-image-viewer.open {
+  display: flex;
+}
+.hero-viewer-stage {
+  width: min(1100px, 94vw);
+  height: min(82vh, 760px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.hero-viewer-stage img {
+  max-width: 100%;
+  max-height: calc(100% - 34px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 20px 70px rgba(0,0,0,.5);
+  background: #111;
+}
+.hero-viewer-title {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+.hero-viewer-close {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+.hero-viewer-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,.16);
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+.hero-viewer-arrow.prev { left: 20px; }
+.hero-viewer-arrow.next { right: 20px; }
+.hero-viewer-dots {
+  position: fixed;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 2;
+}
+.hero-viewer-dots button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,.45);
+  cursor: pointer;
+}
+.hero-viewer-dots button.on {
+  background: #fff;
+  transform: scale(1.3);
+}
+@media (max-width: 650px) {
+  .hero-image-viewer {
+    padding: 14px;
+  }
+  .hero-viewer-stage {
+    width: 94vw;
+    height: 80vh;
+  }
+  .hero-viewer-stage img {
+    max-width: 100%;
+    max-height: calc(100% - 28px);
+    border-radius: 10px;
+  }
+  .hero-viewer-close {
+    top: 10px;
+    right: 10px;
+    width: 42px;
+    height: 42px;
+  }
+  .hero-viewer-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 27px;
+  }
+  .hero-viewer-arrow.prev { left: 8px; }
+  .hero-viewer-arrow.next { right: 8px; }
+  .hero-viewer-dots {
+    bottom: 10px;
+  }
+}
+
 </style>
 </head>
 
@@ -2617,8 +2744,8 @@ html, body {
       if (sliderIdx >= slides.length) sliderIdx = 0;
       box.innerHTML = `<div class="hero-slider-track" id="heroSliderTrack">${slides.map(s => `
         <div class="hero-slide ${s.img ? "" : "no-image"}">
-          ${s.img ? `<img src="${s.img}" alt="${esc(s.title || "Nisha Mobiles")}" onclick="heroNext()" role="button" tabindex="0" title="Tap to view next image">` : ""}
-          <div class="hero-slide-copy"><h2>${esc(s.title || "Nisha Mobiles")}</h2>${s.text ? `<p>${esc(s.text)}</p>` : ""}</div>${s.img ? `<div class="hero-tap-hint">👆 Tap image to change</div>` : ""}
+          ${s.img ? `<img src="${s.img}" alt="${esc(s.title || "Nisha Mobiles")}" onclick="openHeroImage(sliderIdx)" role="button" tabindex="0" title="Tap to view image">` : ""}
+          <div class="hero-slide-copy"><h2>${esc(s.title || "Nisha Mobiles")}</h2>${s.text ? `<p>${esc(s.text)}</p>` : ""}</div>${s.img ? `<div class="hero-tap-hint">👆 Tap image to view</div>` : ""}
         </div>`).join("")}</div>
         ${slides.length > 1 ? `<button class="hero-slider-arrow prev" type="button" onclick="heroPrev()" aria-label="Previous slide">‹</button><button class="hero-slider-arrow next" type="button" onclick="heroNext()" aria-label="Next slide">›</button><div class="hero-slider-dots">${slides.map((_,i)=>`<button type="button" class="${i===sliderIdx?"on":""}" onclick="heroGo(${i})" aria-label="Slide ${i+1}"></button>`).join("")}</div>` : ""}`;
       updateHeroSlider();
@@ -2923,7 +3050,81 @@ html, body {
   });
 })();
 
+
+/* ===== HERO IMAGE VIEWER ===== */
+function openHeroImage(index) {
+  if (!slides.length || !slides[index] || !slides[index].img) return;
+  sliderIdx = (index + slides.length) % slides.length;
+  updateHeroImageViewer();
+  const v = $("heroImageViewer");
+  if (!v) return;
+  v.classList.add("open");
+  v.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+function updateHeroImageViewer() {
+  const v = $("heroImageViewer");
+  const img = $("heroViewerImage");
+  const title = $("heroViewerTitle");
+  const dots = $("heroViewerDots");
+  if (!v || !img || !slides.length) return;
+  const s = slides[sliderIdx];
+  img.src = s.img || "";
+  img.alt = s.title || "Nisha Mobiles";
+  title.textContent = s.title || "";
+  if (dots) {
+    dots.innerHTML = slides.map((_, i) =>
+      `<button type="button" class="${i === sliderIdx ? "on" : ""}" onclick="heroViewerGo(${i})" aria-label="View image ${i + 1}"></button>`
+    ).join("");
+  }
+}
+function closeHeroImage() {
+  const v = $("heroImageViewer");
+  if (!v) return;
+  v.classList.remove("open");
+  v.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+function heroViewerGo(i) {
+  if (!slides.length) return;
+  sliderIdx = (i + slides.length) % slides.length;
+  updateHeroImageViewer();
+}
+function heroViewerNext() {
+  heroViewerGo(sliderIdx + 1);
+}
+function heroViewerPrev() {
+  heroViewerGo(sliderIdx - 1);
+}
+
+document.addEventListener("keydown", function(e) {
+  const v = $("heroImageViewer");
+  if (!v || !v.classList.contains("open")) return;
+  if (e.key === "Escape") closeHeroImage();
+  if (e.key === "ArrowRight") heroViewerNext();
+  if (e.key === "ArrowLeft") heroViewerPrev();
+});
+
+document.addEventListener("click", function(e) {
+  const v = $("heroImageViewer");
+  if (!v || !v.classList.contains("open")) return;
+  if (e.target === v) closeHeroImage();
+});
+
 </script>
+
+
+<!-- HERO IMAGE VIEWER -->
+<div class="hero-image-viewer" id="heroImageViewer" aria-hidden="true">
+  <button class="hero-viewer-close" type="button" onclick="closeHeroImage()" aria-label="Close image">×</button>
+  <button class="hero-viewer-arrow prev" type="button" onclick="heroViewerPrev()" aria-label="Previous image">‹</button>
+  <div class="hero-viewer-stage">
+    <img id="heroViewerImage" src="" alt="">
+    <div class="hero-viewer-title" id="heroViewerTitle"></div>
+  </div>
+  <button class="hero-viewer-arrow next" type="button" onclick="heroViewerNext()" aria-label="Next image">›</button>
+  <div class="hero-viewer-dots" id="heroViewerDots"></div>
+</div>
 
 </body>
 </html>
